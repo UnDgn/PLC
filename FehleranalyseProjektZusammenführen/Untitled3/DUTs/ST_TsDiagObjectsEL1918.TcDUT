@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <DUT Name="ST_TsDiagObjectsEL1918" Id="{af4ba9d1-8dd7-4271-81b9-99e9b7ae5ba1}">
+    <Declaration><![CDATA[TYPE ST_TsDiagObjectsEL1918 :
+(*******************************************************************************************************
+Description			:	Index 16#800E Diagnostic objects
+Supported terminals : 	EL1918
+********************************************************************************************************)
+STRUCT
+
+	nNotUsedData1								:ARRAY[0..8] OF UINT;
+
+(* Sensor test error *)
+	nSensorTestError						:UINT;
+	(*TsDiagObjectsBitsEL1918_bSensorTestError_Input1		 		:= stDiagObjects.nSensorTestError.0;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input2		 			 := stDiagObjects.nSensorTestError.1;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input3		 			 := stDiagObjects.nSensorTestError.2;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input4		 			 := stDiagObjects.nSensorTestError.3;*)
+	
+
+(* Error during two channel evaluation *)
+	nDuringTwoChannelEvaluationError		:UINT;
+	(*TsDiagObjectsBitsEL1918_bErrFirstInputPair 			 := stDiagObjects.nDuringTwoChannelEvaluationError.0;
+	TsDiagObjectsBitsEL1918_bErrSecondInputPair 		 := stDiagObjects.nDuringTwoChannelEvaluationError.1;*)
+
+
+(* Error in the safety mat operating mode: input pair disagree *)
+	nMatModeInputPairDisagreeError			:UINT;
+	(*TsDiagObjectsBitsEL1918_bMatOpModeErrFirstInputPair	 := stDiagObjects.nMatModeInputPairDisagreeError.0 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.1;
+	TsDiagObjectsBitsEL1918_bMatOpModeErrSecondInputPair := stDiagObjects.nMatModeInputPairDisagreeError.2 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.3;*)
+	
+(* Error in the safety mat operating mode: external supply *)
+	nMatModeExternalSupplyError				:UINT;
+	(*TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input1 := stDiagObjects.nMatModeExternalSupplyError.0;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input2 := stDiagObjects.nMatModeExternalSupplyError.1;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input3 := stDiagObjects.nMatModeExternalSupplyError.2;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input4 := stDiagObjects.nMatModeExternalSupplyError.3;*)
+	
+	nNotUsedData2								:ARRAY[0..2] OF UINT;
+
+END_STRUCT
+END_TYPE
+(* End *)
+
+
+
+
+
+
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

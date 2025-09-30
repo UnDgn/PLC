@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsFBMon_Diag" Id="{fc8f5531-2b4e-43a3-9995-ff6b7570cd46}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsFBMon_Diag
+VAR_INPUT
+	nDiag		: UINT;
+END_VAR
+VAR_OUTPUT
+	sDiag		: STRING;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE TO_WORD(nDiag) AND 16#00FF OF
+	1:		sDiag := 'Discrepancy error input group 1';			//Bit 0
+	2:		sDiag := 'Discrepancy error input group 2';			//Bit 1
+	4:		sDiag := 'Discrepancy error in Secure input group';	//Bit 2
+	16:		sDiag := 'EDM monitoring error EDM1';				//Bit 4
+	32:		sDiag := 'EDM monitoring error EDM2';				//Bit 5
+END_CASE
+
+CASE TO_WORD(nDiag) AND 16#FF00 OF
+	256:	sDiag := CONCAT(sDiag, ' - with activated option "SAFE Inputs after Disc Error"');	//Bit 8
+	512:	sDiag := CONCAT(sDiag, ' - with activated option "SAFE Inputs after Disc Error"');	//Bit 9
+	1024:	sDiag := CONCAT(sDiag, ' - with activated option "SAFE Inputs after Disc Error"');	//Bit 10
+END_CASE
+	
+IF nDiag = 0 THEN
+	sDiag := 'No Error';
+ELSIF sDiag = '' THEN
+	sDiag := 'undefined';		
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsFBMon_Diag">
+      <LineId Id="26" Count="3" />
+      <LineId Id="31" Count="7" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="24" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

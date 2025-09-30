@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsFBEDM_Diag" Id="{36e2d0bb-907a-4162-ab81-bea962fcf5fc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsFBEDM_Diag
+VAR_INPUT
+	nDiag		: USINT;
+END_VAR
+VAR_OUTPUT
+	sDiag		: STRING;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nDiag OF
+	0:		sDiag := 'No Error';		
+	1:		sDiag := 'Switch-OFF timer elapsed';	
+	2:		sDiag := 'Switch-ON timer elapsed';	
+ELSE 
+	sDiag := 'undefined';
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsFBEDM_Diag">
+      <LineId Id="10" Count="5" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

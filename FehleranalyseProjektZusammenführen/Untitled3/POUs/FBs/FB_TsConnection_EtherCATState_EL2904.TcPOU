@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsConnection_EtherCATState_EL2904" Id="{0c301c7c-0252-4f11-aeb7-25505dd14ad2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsConnection_EtherCATState_EL2904
+VAR_INPUT
+    nEtherCATState : UINT; // EtherCAT Slave State
+END_VAR
+VAR_OUTPUT
+    sEtherCATState : STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nEtherCATState OF
+    16#0001: sEtherCATState := 'INIT';
+    16#0002: sEtherCATState := 'PREOP';
+    16#0003: sEtherCATState := 'BOOT';
+    16#0004: sEtherCATState := 'SAFEOP';
+    16#0008: sEtherCATState := 'OP';
+ELSE
+    sEtherCATState := 'undefined';
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsConnection_EtherCATState_EL2904">
+      <LineId Id="141" Count="7" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

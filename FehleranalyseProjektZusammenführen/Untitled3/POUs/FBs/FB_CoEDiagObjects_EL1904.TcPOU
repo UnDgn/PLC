@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_CoEDiagObjects_EL1904" Id="{1a484cb1-b3cf-4da0-abc9-040336b668fd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CoEDiagObjects_EL1904
+VAR_INPUT
+	stDiagObjectsEL1904 											: ST_TsDiagObjectsEL1904;
+END_VAR
+VAR_OUTPUT
+	sDiagText      : STRING(255);                 // Gesamtausgabe als Sammelstring
+	asDiagList     : ARRAY[1..10] OF STRING(120); // Einzelmeldungen
+	nDiagCount     : INT;                         // Anzahl aktiver Meldungen
+	
+END_VAR
+VAR
+	TsDiagObjectsBitsEL1904_bSensorTestError_Input1			: BOOL;
+	TsDiagObjectsBitsEL1904_bSensorTestError_Input2			: BOOL;
+	TsDiagObjectsBitsEL1904_bSensorTestError_Input3			: BOOL;
+	TsDiagObjectsBitsEL1904_bSensorTestError_Input4			: BOOL;
+	TsDiagObjectsBitsEL1904_bErrFirstInputPair 				: BOOL;
+	TsDiagObjectsBitsEL1904_bErrSecondInputPair 			: BOOL;
+	TsDiagObjectsBitsEL1904_bMatOpModeErrFirstInputPair 	: BOOL;
+	TsDiagObjectsBitsEL1904_bMatOpModeErrSecondInputPair 	: BOOL;
+	TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input1 : BOOL;
+	TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input2 : BOOL;
+	TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input3 : BOOL;
+	TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input4 : BOOL;
+	i 														: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Sensor-Test Error
+TsDiagObjectsBitsEL1904_bSensorTestError_Input1		:= stDiagObjectsEL1904.nSensorTestError.0;
+TsDiagObjectsBitsEL1904_bSensorTestError_Input2		:= stDiagObjectsEL1904.nSensorTestError.1;
+TsDiagObjectsBitsEL1904_bSensorTestError_Input3		:= stDiagObjectsEL1904.nSensorTestError.2;
+TsDiagObjectsBitsEL1904_bSensorTestError_Input4		:= stDiagObjectsEL1904.nSensorTestError.3;
+
+//Error during two channel evaluation
+TsDiagObjectsBitsEL1904_bErrFirstInputPair 			 := stDiagObjectsEL1904.nDuringTwoChannelEvaluationError.0;
+TsDiagObjectsBitsEL1904_bErrSecondInputPair 		 := stDiagObjectsEL1904.nDuringTwoChannelEvaluationError.1;
+
+//Error in the safety mat operating mode: input pair disagree
+TsDiagObjectsBitsEL1904_bMatOpModeErrFirstInputPair	 := stDiagObjectsEL1904.nMatModeInputPairDisagreeError.0 
+																			AND stDiagObjectsEL1904.nMatModeInputPairDisagreeError.1;
+TsDiagObjectsBitsEL1904_bMatOpModeErrSecondInputPair := stDiagObjectsEL1904.nMatModeInputPairDisagreeError.2 
+																			AND stDiagObjectsEL1904.nMatModeInputPairDisagreeError.3;
+																			
+//Error in the safety mat operating mode: external supply
+TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input1 := stDiagObjectsEL1904.nMatModeExternalSupplyError.0;
+TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input2 := stDiagObjectsEL1904.nMatModeExternalSupplyError.1;
+TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input3 := stDiagObjectsEL1904.nMatModeExternalSupplyError.2;
+TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input4 := stDiagObjectsEL1904.nMatModeExternalSupplyError.3;
+
+
+//muss noch um die Ausgabe in Textform über Strings ergänzt werden!
+sDiagText := '';
+nDiagCount := 0;
+
+FOR i := 1 TO 20 DO
+	asDiagList[i] := '';
+END_FOR;
+
+IF TsDiagObjectsBitsEL1904_bSensorTestError_Input1 THEN
+	nDiagCount := nDiagCount + 1;
+	asDiagList[nDiagCount] := 'Sensor Test Error Input1';
+	sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bSensorTestError_Input2 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Sensor Test Error Input2';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bSensorTestError_Input3 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Sensor Test Error Input3';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bSensorTestError_Input4 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Sensor Test Error Input4';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bErrFirstInputPair THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Two-channel evaluation error on first input pair';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bErrSecondInputPair THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Two-channel evaluation error on second input pair';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bMatOpModeErrFirstInputPair THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Safety mat mode: Input pair 1 disagree';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bMatOpModeErrSecondInputPair THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Safety mat mode: Input pair 2 disagree';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input1 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Safety mat external supply error Input1';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input2 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Safety mat external supply error Input2';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input3 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Safety mat external supply error Input3';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF
+
+IF TsDiagObjectsBitsEL1904_bMatOpModeExtSupplyError_Input4 THEN
+    nDiagCount := nDiagCount + 1;
+    asDiagList[nDiagCount] := 'Safety mat external supply error Input4';
+    sDiagText := CONCAT(sDiagText, CONCAT(asDiagList[nDiagCount], '; '));
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_CoEDiagObjects_EL1904">
+      <LineId Id="88" Count="22" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="118" Count="4" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="220" Count="63" />
+      <LineId Id="154" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

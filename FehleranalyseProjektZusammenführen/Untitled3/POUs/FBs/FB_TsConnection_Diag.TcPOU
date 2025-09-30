@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsConnection_Diag" Id="{30c0e64d-06c5-4946-b8a3-e8b6f4ca8a7c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsConnection_Diag
+VAR_INPUT
+	nDiag		: USINT;
+END_VAR
+VAR_OUTPUT
+	sDiagPart1	: STRING;
+	sDiagPart2	: STRING;
+END_VAR
+VAR
+	nDiag0_3	: BYTE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Evaluate Bit 0..3 *)
+	nDiag0_3 := USINT_TO_BYTE(nDiag) AND 16#0F;
+
+	CASE nDiag0_3 OF
+		0:		sDiagPart1 := 'No Error';
+		1:		sDiagPart1 := 'Invalid command';
+		2:		sDiagPart1 := 'Unknown command';
+		3:		sDiagPart1 := 'Invalid connection ID';
+		4:		sDiagPart1 := 'Invalid CRC';
+		5:		sDiagPart1 := 'Watchdog time elapsed';
+		6:		sDiagPart1 := 'Invalid FSOE address';
+		7:		sDiagPart1 := 'Invalid data';
+		8:		sDiagPart1 := 'Invalid communication parameter length';
+		9:		sDiagPart1 := 'Invalid communication parameters';
+		10:		sDiagPart1 := 'Invalid user parameter length';
+		11:		sDiagPart1 := 'Invalid user parameter';
+		12:		sDiagPart1 := 'FSoE master reset';
+		13:		sDiagPart1 := 'Module err detected on slave, with option "Module error is ComError" activated';
+		14:		sDiagPart1 := 'Module err detected on EL290x, with option "Error acknowledge active" activated';
+		15:		sDiagPart1 := 'Slave not yet started, or unexpected error argument';
+	END_CASE
+
+(* Evaluate Bit 4..7 *)
+	IF nDiag.4 
+	THEN
+		sDiagPart2 := 'FSoE slave error detected - '; 
+	END_IF
+
+	IF nDiag.5 
+	THEN
+		sDiagPart2 := concat(sDiagPart2,'FSoE slave reports Failsafe Value active - ');
+	END_IF
+
+	IF nDiag.6 
+	THEN
+		sDiagPart2 := concat(sDiagPart2,'StartUp - ');
+	END_IF
+
+	IF nDiag.7 
+	THEN
+		sDiagPart2 := concat(sDiagPart2, 'FSoE master reports Failsafe Value active');
+	END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsConnection_Diag">
+      <LineId Id="11" Count="41" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

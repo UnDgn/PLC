@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_CoEDiagObjects_EL1918" Id="{70e8be85-8f45-4689-b999-c269e6c8d00f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CoEDiagObjects_EL1918
+VAR_INPUT
+	stDiagObjectsEL1918 											: ST_TsDiagObjectsEL1918;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input1			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input2			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input3			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input4			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input5			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input6			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input7			: BOOL;
+	TsDiagObjectsBitsEL1918_bSensorTestError_Input8			: BOOL;
+	TsDiagObjectsBitsEL1918_bErrFirstInputPair 				: BOOL;
+	TsDiagObjectsBitsEL1918_bErrSecondInputPair 			: BOOL;
+	TsDiagObjectsBitsEL1918_bErrThirdInputPair 				: BOOL;
+	TsDiagObjectsBitsEL1918_bErrFourthInputPair 			: BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeErrFirstInputPair 	: BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeErrSecondInputPair 	: BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeErrThirdInputPair 	: BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeErrFourthInputPair 	: BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input1 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input2 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input3 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input4 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input5 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input6 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input7 : BOOL;
+	TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input8 : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Sensor-Test Error
+TsDiagObjectsBitsEL1918_bSensorTestError_Input1		:= stDiagObjectsEL1918.nSensorTestError.0;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input2		:= stDiagObjectsEL1918.nSensorTestError.1;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input3		:= stDiagObjectsEL1918.nSensorTestError.2;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input4		:= stDiagObjectsEL1918.nSensorTestError.3;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input5		:= stDiagObjectsEL1918.nSensorTestError.4;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input6		:= stDiagObjectsEL1918.nSensorTestError.5;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input7		:= stDiagObjectsEL1918.nSensorTestError.6;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input8		:= stDiagObjectsEL1918.nSensorTestError.7;
+
+//Error during two channel evaluation
+TsDiagObjectsBitsEL1918_bErrFirstInputPair 			 := stDiagObjectsEL1918.nDuringTwoChannelEvaluationError.0;
+TsDiagObjectsBitsEL1918_bErrSecondInputPair 		 := stDiagObjectsEL1918.nDuringTwoChannelEvaluationError.1;
+TsDiagObjectsBitsEL1918_bErrThirdInputPair 			 := stDiagObjectsEL1918.nDuringTwoChannelEvaluationError.2;
+TsDiagObjectsBitsEL1918_bErrFourthInputPair 		 := stDiagObjectsEL1918.nDuringTwoChannelEvaluationError.3;
+
+//Error in the safety mat operating mode: input pair disagree
+TsDiagObjectsBitsEL1918_bMatOpModeErrFirstInputPair	 := stDiagObjectsEL1918.nMatModeInputPairDisagreeError.0 
+																			AND stDiagObjectsEL1918.nMatModeInputPairDisagreeError.1;
+TsDiagObjectsBitsEL1918_bMatOpModeErrSecondInputPair := stDiagObjectsEL1918.nMatModeInputPairDisagreeError.2 
+																			AND stDiagObjectsEL1918.nMatModeInputPairDisagreeError.3;
+TsDiagObjectsBitsEL1918_bMatOpModeErrThirdInputPair	 := stDiagObjectsEL1918.nMatModeInputPairDisagreeError.4 
+																			AND stDiagObjectsEL1918.nMatModeInputPairDisagreeError.5;
+TsDiagObjectsBitsEL1918_bMatOpModeErrFourthInputPair := stDiagObjectsEL1918.nMatModeInputPairDisagreeError.6 
+																			AND stDiagObjectsEL1918.nMatModeInputPairDisagreeError.7;																			
+																			
+//Error in the safety mat operating mode: external supply
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input1 := stDiagObjectsEL1918.nMatModeExternalSupplyError.0;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input2 := stDiagObjectsEL1918.nMatModeExternalSupplyError.1;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input3 := stDiagObjectsEL1918.nMatModeExternalSupplyError.2;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input4 := stDiagObjectsEL1918.nMatModeExternalSupplyError.3;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input5 := stDiagObjectsEL1918.nMatModeExternalSupplyError.4;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input6 := stDiagObjectsEL1918.nMatModeExternalSupplyError.5;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input7 := stDiagObjectsEL1918.nMatModeExternalSupplyError.6;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input8 := stDiagObjectsEL1918.nMatModeExternalSupplyError.7;
+
+
+//muss noch um die Ausgabe in Textform über Strings ergänzt werden!
+
+
+
+
+
+
+
+
+(*
+//Sensor-Test Error
+TsDiagObjectsBitsEL1918_bSensorTestError_Input1		:= stDiagObjects.nSensorTestError.0;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input2		:= stDiagObjects.nSensorTestError.1;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input3		:= stDiagObjects.nSensorTestError.2;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input4		:= stDiagObjects.nSensorTestError.3;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input5		:= stDiagObjects.nSensorTestError.4;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input6		:= stDiagObjects.nSensorTestError.5;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input7		:= stDiagObjects.nSensorTestError.6;
+TsDiagObjectsBitsEL1918_bSensorTestError_Input8		:= stDiagObjects.nSensorTestError.7;
+
+//Error during two channel evaluation
+TsDiagObjectsBitsEL1918_bErrFirstInputPair 			 := stDiagObjects.nDuringTwoChannelEvaluationError.0;
+TsDiagObjectsBitsEL1918_bErrSecondInputPair 		 := stDiagObjects.nDuringTwoChannelEvaluationError.1;
+TsDiagObjectsBitsEL1918_bErrThirdInputPair 			 := stDiagObjects.nDuringTwoChannelEvaluationError.2;
+TsDiagObjectsBitsEL1918_bErrFourthInputPair 		 := stDiagObjects.nDuringTwoChannelEvaluationError.3;
+
+//Error in the safety mat operating mode: input pair disagree
+TsDiagObjectsBitsEL1918_bMatOpModeErrFirstInputPair	 := stDiagObjects.nMatModeInputPairDisagreeError.0 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.1;
+TsDiagObjectsBitsEL1918_bMatOpModeErrSecondInputPair := stDiagObjects.nMatModeInputPairDisagreeError.2 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.3;
+TsDiagObjectsBitsEL1918_bMatOpModeErrThirdInputPair	 := stDiagObjects.nMatModeInputPairDisagreeError.4 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.5;
+TsDiagObjectsBitsEL1918_bMatOpModeErrFourthInputPair := stDiagObjects.nMatModeInputPairDisagreeError.6 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.7;																			
+																			
+//Error in the safety mat operating mode: external supply
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input1 := stDiagObjects.nMatModeExternalSupplyError.0;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input2 := stDiagObjects.nMatModeExternalSupplyError.1;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input3 := stDiagObjects.nMatModeExternalSupplyError.2;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input4 := stDiagObjects.nMatModeExternalSupplyError.3;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input5 := stDiagObjects.nMatModeExternalSupplyError.4;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input6 := stDiagObjects.nMatModeExternalSupplyError.5;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input7 := stDiagObjects.nMatModeExternalSupplyError.6;
+TsDiagObjectsBitsEL1918_bMatOpModeExtSupplyError_Input8 := stDiagObjects.nMatModeExternalSupplyError.7;
+
+
+//muss noch um die Ausgabe in Textform über Strings ergänzt werden! *)]]></ST>
+    </Implementation>
+    <LineIds Name="FB_CoEDiagObjects_EL1918">
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="81" Count="2" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="27" Count="3" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="91" Count="2" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="37" Count="2" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="95" Count="2" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="46" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="170" Count="7" />
+      <LineId Id="131" Count="0" />
+      <LineId Id="133" Count="36" />
+      <LineId Id="130" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

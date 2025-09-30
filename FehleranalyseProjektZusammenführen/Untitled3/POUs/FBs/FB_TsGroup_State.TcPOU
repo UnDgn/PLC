@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsGroup_State" Id="{f6e9f44f-de60-4c46-8e44-093318ec21b7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsGroup_State
+VAR_INPUT
+	nState: USINT;
+END_VAR
+VAR_OUTPUT
+	sState: STRING;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nState OF
+	1:	sState := 'RUN';
+	2:	sState := 'STOP';
+	4:	sState := 'ERROR';
+	5:	sState := 'RESET';
+	6:	sState := 'START';
+	7:	sState := 'STOPERROR';
+	16:	sState := 'DEACTIVE';
+	17:	sState := 'WAITCOMERROR';
+ELSE
+	sState := 'undefined';
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsGroup_State">
+      <LineId Id="10" Count="10" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

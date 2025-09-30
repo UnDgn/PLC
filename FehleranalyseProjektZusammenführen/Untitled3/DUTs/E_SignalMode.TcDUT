@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.12">
+  <DUT Name="E_SignalMode" Id="{54c7c7ec-8552-4782-8ae3-168155635a5a}">
+    <Declaration><![CDATA[TYPE E_SignalMode :
+(
+
+	SignalMode_Off,
+    SignalMode_Static,
+    SignalMode_Rectangle,
+    SignalMode_Sinus,
+    SignalMode_Triangle
+   
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.12">
+  <POU Name="MAIN" Id="{a27a3fd7-caba-4e2f-8aab-97e54d88cfde}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	//Variables for running the safety project
+	bSafety_RunStop					AT%Q*	: BOOL;
+	bSafety_ErrAck					AT%Q*	: BOOL;
+	bSafery_RestartEStop			AT%Q*	: BOOL;
+	bSafery_RestartMON				AT%Q*	: BOOL;
+	bSafety_FBErr					AT%I*	: BOOL;
+	bSafety_ComErr					AT%I*	: BOOL;
+	
+
+	
+	//Variables for the error analysis
+	fbEcCoeSdoRead							: FB_EcCoESdoReadEx;
+	fbTsConnectionState						: FB_TsConnection_State;
+	fbTsConnectionDiag						: FB_TsConnection_Diag;
+	stDiagObjects							: ST_TsDiagObjectsEL1904;
+	fbCoEDiagObjectsEL1904					: FB_CoEDiagObjects_EL1904;
+	sErrorText_EL1904						: STRING(255);
+	stDiagObjectsEL1918						: ST_TsDiagObjectsEL1918;
+	fbCoEDiagObjectsEL1918					: FB_CoEDiagObjects_EL1918;
+	sErrorText_EL1918						: STRING(255);
+	stDiagObjectsEL2904						: ST_TsDiagObjectsEL2904;
+	fbCoEDiagObjectsEL2904					: FB_CoEDiagObjects_EL2904;
+	sErrorText_EL2904						: STRING(255);
+	stDiagObjectsEL2912						: ST_TsDiagObjectsEL2912;
+	fbCoEDiagObjectsEL2912					: FB_CoEDiagObjects_EL2912;
+	sErrorText_EL2912						: STRING(255);
+	
+	//Specific TwinSAFE Module related variables
+	bTsModulError1					AT%I*	: BOOL;
+	sDiagModulError1						: STRING;
+	
+	//Specific TwinSAFE group related variables
+	fbTsGroupState							: FB_TsGroup_State;
+	fbTsGroupDiag							: FB_TsGroup_Diag;
+	nState_TsGroup1					AT%I*	: USINT;
+	sState_TsGroup1							: STRING(255);
+	nDiag_TsGroup1					AT%I*	: USINT;
+	sDiag_TsGroup1							: STRING;
+	
+	//Specific TwinSAFE FBs related variables
+	fbTsFBEdmState							: FB_TsFBEDM_State;
+	fbTsFBEdmDiag							: FB_TsFBEDM_Diag;
+	nState_TsFBEDM					AT%I*	: USINT;
+	sState_TsFBEDM							: STRING(255);
+	nDiag_TsFBEDM					AT%I*	: USINT;
+	sDiag_TsFBEDM							: STRING(255);
+	fbTsFBEstopState						: FB_TsFBEStop_State;
+	fbTsFBEstopDiag							: FB_TsFBEStop_Diag;
+	nState_TsFBEstop				AT%I*	: USINT;
+	sState_TsFBEstop						: STRING(255);
+	nDiag_TsFBEstop					AT%I*	: UINT;
+	sDiag_TsFBEstop							: STRING(255);
+	fbTsFBMonState							: FB_TsFBMon_State;
+	fbTsFBMonDiag							: FB_TsFBMon_Diag;
+	nState_TsFBMon					AT%I*	: USINT;
+	sState_TsFBMon							: STRING(255);
+	nDiag_TsFBMon					AT%I*	: UINT;
+	sDiag_TsFBMon							: STRING(255);
+	
+	//Specific TwinSAFE terminal related variables
+		// EL1904
+	fbTsConnectionStateEL1904 				: FB_TsConnection_EtherCatState_EL1904;
+ // fbTsConnectionDiagEL1904  				: FB_TsConnection_Diag_EL1904;
+	nEtherCATState_EL1904			AT%I*	: UINT;
+	sEtherCATState_EL1904					: STRING(255);
+	bWcState_EL1904					AT%I*	: BOOL;
+	nState_EL1904					AT%I*	: USINT;
+	sState_EL1904							: STRING(255);
+	nDiag_EL1904					AT%I*	: USINT;
+	sDiagPart1_EL1904						: STRING(255);
+	sDiagPart2_EL1904						: STRING(255);
+		// EL1918
+	nEtherCATState_EL1918			AT%I*	: UINT;
+	sEtherCATState_EL1918					: STRING(255);
+	bWcState_EL1918					AT%I*	: BOOL;
+	nState_EL1918					AT%I*	: USINT;
+	sState_EL1918							: STRING(255);
+	nDiag_EL1918					AT%I*	: USINT;
+	sDiagPart1_EL1918						: STRING(255);
+	sDiagPart2_EL1918						: STRING(255);
+	fbTsConnectionStateEL1918 				: FB_TsConnection_EtherCatState_EL1918;
+    fbTsConnectionDiagEL1918  				: FB_TsConnection_Diag_EL1918;
+	sStateTextEL1918 						: STRING(50);
+    sDiagTextEL1918  						: STRING(255);
+    sFullTextEL1918  						: STRING(300);
+		// EL2904
+	nEtherCATState_EL2904			AT%I*	: UINT;
+	sEtherCATState_EL2904					: STRING(255);
+	fbTsConnectionStateEL2904 				: FB_TsConnection_EtherCatState_EL2904;
+   // fbTsConnectionDiagEL2904  				: FB_TsConnection_Diag_EL2904;
+	bWcState_EL2904					AT%I*	: BOOL;
+	nState_EL2904					AT%I*	: USINT;
+	sState_EL2904							: STRING(255);
+	nDiag_EL2904					AT%I*	: USINT;
+	sDiagPart1_EL2904						: STRING(255);
+	sDiagPart2_EL2904						: STRING(255);
+		// EL2912
+	nEtherCATState_EL2912			AT%I*	: UINT;
+	sEtherCATState_EL2912					: STRING(255);
+	fbTsConnectionStateEL2912				: FB_TsConnection_EtherCatState_EL2912;
+ 	fbTsConnectionDiagEL2912  				: FB_TsConnection_Diag_EL2912;
+	sStateTextEL2912 						: STRING(50);
+	sDiagTextEL2912  						: STRING(255);
+	bWcState_EL2912_1				AT%I*	: BOOL;
+	bWcState_EL2912_2				AT%I*	: BOOL;
+	nState_EL2912					AT%I*	: USINT;
+	sState_EL2912							: STRING(255);
+	nDiag_EL2912					AT%I*	: USINT;
+	sDiagPart1_EL2912						: STRING(255);
+	sDiagPart2_EL2912						: STRING(255);
+	
+	//Additional variables
+	MasterAmsNetID				AT%I*		: T_AmsNetIdArr;
+	sMasterNetID							: T_AmsNetId;
+	
+	
+	sErrorTextPopup							: STRING(255);
+	sErrorTextPopup2						: STRING(255);
+	sErrorTextPopup3						: STRING(255);
+	bInitDone 								: BOOL			:= FALSE;
+	nCount									: REAL;
+	nCount2									: REAL;
+	
+//---------------------------------------------------------------------------------------------------------------
+
+//Dogan
+
+    bExecute        : BOOL;
+	nElmCurr			: REAL;
+	
+	// Fehlerbits
+	EL3074				: MDP5001_300_E23EC103;
+	EL3074_Underrange	: BOOL;
+	EL3074_Overrange	: BOOL;
+	EL3074_Error		: BOOL;
+	
+	EL3174 				: MDP5001_300_B3F675AA;
+	AI3174_Underrange 	: BOOL;
+    AI3174_Overrange  	: BOOL;
+    AI3174_Error      	: BOOL;
+	
+	ELM3142				: MDP5001_350_03DC4FA7;
+	ELM3142_Underrange 	: BOOL;
+    ELM3142_Overrange  	: BOOL;
+    ELM3142_Error      	: BOOL;
+	
+	EL3202				: MDP5001_320_65048876;
+	EL3202_Underrange	: BOOL;
+	EL3202_Overrange	: BOOL;
+	EL3202_Error		: BOOL;
+    // Ein-/Ausgänge
+    nOutV1          AT%Q* : INT;
+    nIn3074V1       AT%I* : INT;
+	nOutA1			AT%Q* : INT;
+	nIn3174A1		AT%I* : INT;
+	nRTD			AT%I* : INT;
+	nELM			AT%I* : DINT;
+	nRTDVal					: REAL;
+	nCurr					: REAL;
+	nVoltELM				: LREAL;
+	nVoltEL					: REAL;
+    // Umschaltung der Signalart
+    SignalMode      : E_SignalMode := SignalMode_Off;
+    // Rechtecksignal
+    tOn             : TON;
+    bOut            : BOOL;
+    // Sinussignal
+    fAmplitude      : REAL := 30000.0; 
+    fFrequency      : REAL := 1.0;  
+    fOffset         : REAL := 0.0;     
+    fSinusValue     : REAL;
+    tNow            : TIME;
+    tLastCycle      : TIME;
+    fTime           : REAL := 0.0;
+	bLastExecute    : BOOL := FALSE; // Merker für Flankenwechsel
+	
+	//Dreiecksignal
+    fPeriod     : REAL := 1.0;              // Dauer einer Periode in Sekunden
+    fSlope      : REAL;
+    fPhase      : REAL;
+    fTriangle   : REAL;
+
+//Alarm
+	fbEventlogger : FB_TcEventLogger;
+	fbAlarm: FB_TcAlarm;
+	fbMessage: FB_TcMessage;
+	
+	bAlarm: BOOL;
+	bMessage : BOOL;
+	bIsInitalized: BOOL;
+	bClearAlarm: BOOL;
+	bConfirmAlarm: BOOL;
+	
+	bClearLoggedEvents: BOOL;
+	ClearLoggedEvents: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[bSafety_RunStop := TRUE;
+
+nCount := nCount +0.1;
+IF nCount >= 170 THEN
+	nCount := 0;
+END_IF
+
+nCount2 := nCount2 -0.0765;
+IF nCount2 <= -130 THEN
+	nCount2 := 0;
+END_IF
+
+sDiagPart1_EL1918 := 'No Error detacted';
+sDiagPart2_EL1918 := '';
+sErrorText_EL1918 := '';
+
+// EL1904
+sDiagPart1_EL1904 := 'No Error detacted';
+sDiagPart2_EL1904 := '';
+sErrorText_EL1904 := '';
+
+// EL2904
+sDiagPart1_EL2904 := 'No Error detacted';
+sDiagPart2_EL2904 := '';
+sErrorText_EL2904 := '';
+
+// EL2912
+sDiagPart1_EL2912 := 'No Error detacted';
+sDiagPart2_EL2912 := '';
+sErrorText_EL2912 := '';
+
+//bInitDone := TRUE; // nur einmal ausführen
+
+//group state of TwinSAFE Group 1
+fbTsGroupState(nState:=nState_TsGroup1);
+sState_TsGroup1 := fbTsGroupState.sState; 	//writing the actual group state as text into a string variable
+
+//Device EtherCAT State
+	//EL1918
+		fbTsConnectionStateEL1918(nEtherCATState := nEtherCATState_EL1918);
+		sEtherCATState_EL1918 := fbTsConnectionStateEL1918.sEtherCATState;
+	//EL1904
+		fbTsConnectionStateEL1904(nEtherCATState := nEtherCATState_EL1904);
+		sEtherCATState_EL1904 := fbTsConnectionStateEL1904.sEtherCATState;	
+	//EL2904
+		fbTsConnectionStateEL2904(nEtherCATState := nEtherCATState_EL2904);
+		sEtherCATState_EL2904 := fbTsConnectionStateEL2904.sEtherCATState;		
+	//EL2912
+		fbTsConnectionStateEL2912(nEtherCATState := nEtherCATState_EL2912);
+		sEtherCATState_EL2912 := fbTsConnectionStateEL2912.sEtherCATState;		
+//Device FSoE State
+	//EL1918
+	
+	//EL1904
+		fbTsConnectionStateEL1918(nEtherCATState := nEtherCATState_EL1918);
+		sEtherCATState_EL1918 := fbTsConnectionStateEL1918.sEtherCATState;
+		fbTsConnectionState(nState:=nState_EL1904);
+		sState_EL1904 := fbTsConnectionState.sState;
+	//EL2904
+		fbTsConnectionState(nState:=nState_EL2904);
+		sState_EL2904 := fbTsConnectionState.sState;
+	//EL2912
+		fbTsConnectionState(nState:=nState_EL2912);
+		sState_EL2912 := fbTsConnectionState.sState;
+//group diag of TwinSAFE Group 1
+fbTsGroupDiag(nDiag:=nDiag_TsGroup1);
+sDiag_TsGroup1 := fbTsGroupDiag.sDiag;		//writing the actual group diag as text into a string variable
+
+
+IF bTsModulError1 THEN
+		sDiagModulError1 := 'EL1918 0x8062 SAFEIN:Diagnosis Test: Feedback in Step2 active Channel is wrong. Module:0x3 / DiagChannel:0x1';
+END_IF
+IF (nState_TsGroup1 = 3) THEN 	//Module Error
+	
+END_IF
+
+IF bSafety_FBErr THEN	//Function block Error
+	//Check each FB state
+		fbTsFBEdmState(nState:=nState_TsFBEDM);
+		sState_TsFBEDM := fbTsFBEdmState.sState;
+		IF (nState_TsFBEDM = 4) THEN		//if the safeEDM is in state Error then the Diag-Bits get checked
+			fbTsFBEdmDiag(nDiag:=nDiag_TsFBEDM);
+			sDiag_TsFBEDM := fbTsFBEdmDiag.sDiag;
+		END_IF
+		
+		fbTsFBEstopState(nState:=nState_TsFBEstop);
+		sState_TsFBEstop := fbTsFBEstopState.sState;
+		IF (nState_TsFBEstop = 4) THEN		//if the safeEStop is in state Error then the Diag-Bits get checked
+			fbTsFBEstopDiag(nDiag:=nDiag_TsFBEstop);
+			sDiag_TsFBEstop := fbTsFBEstopDiag.sDiag;
+		END_IF
+		
+		fbTsFBMonState(nState:=nState_TsFBMon);
+		sState_TsFBMon := fbTsFBMonState.sState;
+		IF (nState_TsFBMon = 4) THEN		//if the safeMon is in state Error then the Diag-Bits get checked
+			fbTsFBMonDiag(nDiag:=nDiag_TsFBMon);
+			sDiag_TsFBMon := fbTsFBMonDiag.sDiag;
+		END_IF
+END_IF
+
+IF bSafety_ComErr THEN	//Communication Error
+	//Check each TwinSAFE connection state
+		//EL1904
+		fbTsConnectionState(nState:=nState_EL1904);
+		sState_EL1904 := fbTsConnectionState.sState;
+		fbTsConnectionDiag(nDiag:=nDiag_EL1904);
+		sDiagPart1_EL1904 := fbTsConnectionDiag.sDiagPart1;
+		sDiagPart2_EL1904 := fbTsConnectionDiag.sDiagPart2;
+		IF (nState_EL1904 = 100) OR (nState_EL1904 = 101) OR (nState_EL1904 = 102) OR (nState_EL1904 = 103) THEN //if the connection is in state RESET, SESSION, CONNECTION or PARAMETER then the EtherCAT state, WcState and CoE-Objects 800E get checked
+			IF nEtherCATState_EL1904 = 8 THEN
+				IF bWcState_EL1904 THEN
+					sErrorText_EL1904 := CONCAT(sErrorText_EL1904, 'The terminal EL1904 has a WcState Error');
+				ELSE
+					//read CoE-diagnostic-objects 800E
+					sMasterNetID := F_CreateAmsNetId(MasterAmsNetID);
+					fbEcCoeSdoRead(
+							sNetId			:= 	sMasterNetID,	//needs to be changed according to the NetId of the EtherCAT Master
+							nSlaveAddr		:= 	1003,				//needs to be changed according to the EtherCAT Addr of the EtherCAT Slave
+							nSubIndex		:= 	1,
+							nIndex			:= 	16#800E,
+							pDstBuf			:= 	ADR(stDiagObjects),
+							cbBufLen		:= 	SIZEOF(stDiagObjects),
+							bExecute		:= 	TRUE,
+							tTimeout		:= 	DEFAULT_ADS_TIMEOUT,
+							bCompleteAccess	:= 	TRUE);
+					
+					IF NOT fbEcCoeSdoRead.bBusy AND NOT fbEcCoeSdoRead.bError THEN
+						fbEcCoeSdoRead(bExecute := FALSE);
+						fbCoEDiagObjectsEL1904(stDiagObjectsEL1904:=stDiagObjects);	
+					ELSIF NOT fbEcCoeSdoRead.bBusy AND fbEcCoeSdoRead.bError THEN
+						sErrorText_EL1904 := CONCAT(sErrorText_EL1904, 'Error reading CoE objects of terminal EL1904'); //noch um Platzhalter mit Namen der Klemme ersetzen
+					END_IF
+					
+				END_IF
+				
+			ELSE
+				sErrorText_EL1904 := CONCAT(sErrorText_EL1904, 'The terminal EL1904 is not in the EtherCAT state OP');
+			END_IF
+			
+		END_IF
+		
+		//EL1918
+		// 1. State-Text über FB generieren
+	fbTsConnectionStateEL1918(nEtherCATState := nEtherCATState_EL1918);
+	sState_EL1918 := fbTsConnectionStateEL1918.sEtherCATState;
+
+		// 2. Diagnose-Text(e) über FB generieren
+	fbTsConnectionDiagEL1918(nDiagCode := nEtherCATState_EL1918);
+	sDiagPart2_EL1918 := fbTsConnectionDiagEL1918.sDiag;
+		
+		IF (nState_EL1918 = 100) OR (nState_EL1918 = 101) OR (nState_EL1918 = 102) OR (nState_EL1918 = 103) THEN //if the connection is in state RESET, SESSION, CONNECTION or PARAMETER then the EtherCAT state, WcState and CoE-Objects 800E get checked
+			IF nEtherCATState_EL1918 = 8 THEN
+				IF bWcState_EL1918 THEN
+					sErrorText_EL1918 := CONCAT(sErrorText_EL1918, 'The terminal EL1918 has a WcState Error');
+				ELSE
+					//read CoE-diagnostic-objects 800E
+					sMasterNetID := F_CreateAmsNetId(MasterAmsNetID);
+					fbEcCoeSdoRead(
+							sNetId			:= 	sMasterNetID,	//needs to be changed according to the NetId of the EtherCAT Master
+							nSlaveAddr		:= 	1003,				//needs to be changed according to the EtherCAT Addr of the EtherCAT Slave
+							nSubIndex		:= 	1,
+							nIndex			:= 	16#800E,
+							pDstBuf			:= 	ADR(stDiagObjectsEL1918),
+							cbBufLen		:= 	SIZEOF(stDiagObjectsEL1918),
+							bExecute		:= 	TRUE,
+							tTimeout		:= 	DEFAULT_ADS_TIMEOUT,
+							bCompleteAccess	:= 	TRUE);
+					
+					IF NOT fbEcCoeSdoRead.bBusy AND NOT fbEcCoeSdoRead.bError THEN
+						fbEcCoeSdoRead(bExecute := FALSE);
+						fbCoEDiagObjectsEL1918(stDiagObjectsEL1918:=stDiagObjectsEL1918);	
+					ELSIF NOT fbEcCoeSdoRead.bBusy AND fbEcCoeSdoRead.bError THEN
+						sErrorText_EL1918 := CONCAT(sErrorText_EL1918, 'Error reading CoE objects of terminal EL1918'); //noch um Platzhalter mit Namen der Klemme ersetzen
+					END_IF
+					
+				END_IF
+				
+			ELSE
+				sErrorText_EL1918 := CONCAT(sErrorText_EL1918, 'The terminal EL1918 is not in the EtherCAT state OP');
+			END_IF
+			
+		END_IF
+		
+		//EL2904
+		fbTsConnectionState(nState:=nState_EL2904);
+		sState_EL2904 := fbTsConnectionState.sState;
+		fbTsConnectionDiag(nDiag:=nDiag_EL2904);
+		sDiagPart1_EL2904 := fbTsConnectionDiag.sDiagPart1;
+		sDiagPart2_EL2904 := fbTsConnectionDiag.sDiagPart2;
+		IF (nState_EL2904 = 100) OR (nState_EL2904 = 101) OR (nState_EL2904 = 102) OR (nState_EL2904 = 103) THEN //if the connection is in state RESET, SESSION, CONNECTION or PARAMETER then the EtherCAT state, WcState and CoE-Objects 800E get checked
+			IF nEtherCATState_EL2904 = 8 THEN
+				IF bWcState_EL2904 THEN
+					sErrorText_EL2904 := CONCAT(sErrorText_EL2904, 'The terminal EL2904 has a WcState Error');
+				ELSE
+					//read CoE-diagnostic-objects 800E
+					sMasterNetID := F_CreateAmsNetId(MasterAmsNetID);
+					fbEcCoeSdoRead(
+							sNetId			:= 	sMasterNetID,	//needs to be changed according to the NetId of the EtherCAT Master
+							nSlaveAddr		:= 	1003,				//needs to be changed according to the EtherCAT Addr of the EtherCAT Slave
+							nSubIndex		:= 	1,
+							nIndex			:= 	16#800E,
+							pDstBuf			:= 	ADR(stDiagObjectsEL2904),
+							cbBufLen		:= 	SIZEOF(stDiagObjectsEL2904),
+							bExecute		:= 	TRUE,
+							tTimeout		:= 	DEFAULT_ADS_TIMEOUT,
+							bCompleteAccess	:= 	TRUE);
+					
+					IF NOT fbEcCoeSdoRead.bBusy AND NOT fbEcCoeSdoRead.bError THEN
+						fbEcCoeSdoRead(bExecute := FALSE);
+						fbCoEDiagObjectsEL2904(stDiagObjectsEL2904:=stDiagObjectsEL2904);	
+					ELSIF NOT fbEcCoeSdoRead.bBusy AND fbEcCoeSdoRead.bError THEN
+						sErrorText_EL2904 := CONCAT(sErrorText_EL2904, 'Error reading CoE objects of terminal EL2904'); //noch um Platzhalter mit Namen der Klemme ersetzen
+					END_IF
+					
+				END_IF
+				
+			ELSE
+				sErrorText_EL2904 := CONCAT(sErrorText_EL2904, 'The terminal EL2904 is not in the EtherCAT state OP');
+			END_IF
+			
+		END_IF
+		
+		//EL2912
+			// 1. State-Text über FB generieren
+	fbTsConnectionStateEL2912(nEtherCATState := nState_EL2912);
+	sState_EL1918 := fbTsConnectionStateEL1918.sEtherCATState;
+
+		// 2. Diagnose-Text(e) über FB generieren
+	fbTsConnectionDiagEL2912(nDiagCode := nDiag_EL2912);
+	sDiagTextEL2912 := fbTsConnectionDiagEL2912.sDiag;
+	
+		fbTsConnectionState(nState:=nState_EL2912);
+		sState_EL2912 := fbTsConnectionState.sState;
+		fbTsConnectionDiag(nDiag:=nDiag_EL2904);
+		sDiagPart1_EL2912 := fbTsConnectionDiag.sDiagPart1;
+		sDiagPart2_EL2912 := fbTsConnectionDiag.sDiagPart2;
+		IF (nState_EL2912 = 100) OR (nState_EL2912 = 101) OR (nState_EL2912 = 102) OR (nState_EL2912 = 103) THEN //if the connection is in state RESET, SESSION, CONNECTION or PARAMETER then the EtherCAT state, WcState and CoE-Objects 800E get checked
+			IF nEtherCATState_EL2912 = 8 THEN
+				IF bWcState_EL2912_1 OR bWcState_EL2912_2 THEN
+					sErrorText_EL2912 := CONCAT(sErrorText_EL2912, 'The terminal EL2912 has a WcState Error');
+				ELSE
+					// 1. State-Text über FB generieren
+						fbTsConnectionStateEL2912(nEtherCATState := nState_EL2912);
+						sState_EL1918 := fbTsConnectionStateEL1918.sEtherCATState;
+
+					// 2. Diagnose-Text(e) über FB generieren
+						fbTsConnectionDiagEL2912(nDiagCode := nDiag_EL2912);
+						sDiagTextEL2912 := fbTsConnectionDiagEL2912.sDiag;
+					
+				END_IF
+				
+			ELSE
+				sErrorText_EL2912 := CONCAT(sErrorText_EL2912, 'The terminal EL2912 is not in the EtherCAT state OP');
+			END_IF
+			
+		END_IF
+		//continue with the rest of the terminals...
+		
+END_IF
+	
+//----------------------------------------------Dogan
+
+ // Zeit immer aktualisieren
+tNow := TIME();
+
+// Rising edge von bExecute → Initialisierung
+IF (bExecute AND NOT bLastExecute) THEN
+    fTime := 0.0;
+    tLastCycle := tNow;
+    bOut := FALSE;
+END_IF
+bLastExecute := bExecute;
+
+// Wenn bExecute nicht aktiv → Ausgang 0
+IF NOT bExecute THEN
+    nOutV1 := 0;
+    RETURN;
+END_IF
+
+// Zykluszeit berechnen
+IF tLastCycle <> T#0S THEN
+    fTime := fTime + TO_REAL(TIME_TO_DINT(tNow - tLastCycle)) / 1000.0;
+END_IF;
+tLastCycle := tNow;
+
+// Signal wählen
+CASE SignalMode OF
+
+    SignalMode_Off:
+        nOutV1 := 0;
+
+    SignalMode_Static:
+        nOutV1 := 3280;
+		nOutA1 := 10000;
+
+    SignalMode_Rectangle:
+        tOn(IN := TRUE, PT := T#1500MS);
+        IF tOn.Q THEN
+            bOut := NOT bOut;
+            tOn(IN := FALSE);
+        ELSE
+            tOn(IN := TRUE);
+        END_IF;
+
+        IF bOut THEN
+            nOutV1 := 30000;
+			nOutA1 := 20000;
+        ELSE
+            nOutV1 := 0;
+			nOutA1 := 0;
+        END_IF;
+
+    SignalMode_Sinus:
+        fSinusValue := fAmplitude * SIN(2.0 * 3.1415926535 * fFrequency * fTime) + fOffset;
+        nOutV1 := REAL_TO_INT(fSinusValue);
+		nOutA1 := REAL_TO_INT(fSinusValue)/2;
+		
+SignalMode_Triangle:
+	
+// Steigung berechnen
+fSlope := (4.0 * fAmplitude) / fPeriod;
+
+// Phase berechnen (Ersatz für MOD)
+fPhase := fTime - fPeriod * DINT_TO_REAL(TRUNC(fTime / fPeriod));
+
+
+// Dreiecksignal berechnen
+fTriangle := fSlope * ABS(fPhase - (fPeriod / 2.0)) - fAmplitude;
+
+// Ausgang setzen
+nOutV1 := REAL_TO_INT(fTriangle + fOffset);
+	
+    ELSE
+        nOutV1 := 0;
+
+END_CASE;
+
+// Fehlerbits
+
+IF bExecute THEN
+    AI3174_Error := EL3174.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Error;
+
+    IF EL3174.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Overrange THEN
+        AI3174_Overrange := TRUE;
+    ELSE
+        AI3174_Overrange := FALSE;
+    END_IF
+
+    IF EL3174.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Underrange THEN
+        AI3174_Underrange := TRUE;
+    ELSE
+        AI3174_Underrange := FALSE;
+    END_IF
+ELSE
+    AI3174_Error      := FALSE;
+    AI3174_Overrange  := FALSE;
+    AI3174_Underrange := FALSE;
+END_IF
+
+IF bExecute THEN
+    EL3074_Error := el3074.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Error;
+
+    IF EL3074.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Overrange THEN
+        EL3074_Overrange := TRUE;
+    ELSE
+        EL3074_Overrange := FALSE;
+    END_IF
+
+    IF EL3074.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Underrange THEN
+        EL3074_Underrange := TRUE;
+    ELSE
+        EL3074_Underrange := FALSE;
+    END_IF
+ELSE
+    EL3074_Error      := FALSE;
+    EL3074_Overrange  := FALSE;
+    EL3074_Underrange := FALSE;
+END_IF
+
+IF bExecute THEN
+    EL3202_Error := el3202.MDP5001_320_Input.MDP5001_320_RTD_Inputs_Channel_1_Status.Error;
+
+    IF el3202.MDP5001_320_Input.MDP5001_320_RTD_Inputs_Channel_1_Status.Overrange THEN
+        EL3202_Overrange := TRUE;
+    ELSE
+        EL3202_Overrange := FALSE;
+    END_IF
+
+    IF el3202.MDP5001_320_Input.MDP5001_320_RTD_Inputs_Channel_1_Status.Underrange THEN
+        EL3202_Underrange := TRUE;
+    ELSE
+        EL3202_Underrange := FALSE;
+    END_IF
+ELSE
+    EL3202_Error      := FALSE;
+    EL3202_Overrange  := FALSE;
+    EL3202_Underrange := FALSE;
+END_IF
+
+IF bExecute THEN
+    EL3074_Error := el3074.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Error;
+
+    IF EL3074.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Overrange THEN
+        EL3074_Overrange := TRUE;
+    ELSE
+        EL3074_Overrange := FALSE;
+    END_IF
+
+    IF EL3074.MDP5001_300_Input.MDP5001_300_AI_Standard_Channel_1_Status.Underrange THEN
+        EL3074_Underrange := TRUE;
+    ELSE
+        EL3074_Underrange := FALSE;
+    END_IF
+ELSE
+    EL3074_Error      := FALSE;
+    EL3074_Overrange  := FALSE;
+    EL3074_Underrange := FALSE;
+END_IF
+
+IF bExecute THEN
+    ELM3142_Error := elm3142.MDP5001_350_Input.MDP5001_350_PAI_Status_Channel_1_Status.Error;
+
+    IF ELM3142.MDP5001_350_Input.MDP5001_350_PAI_Status_Channel_1_Status.Overrange THEN
+        ELM3142_Overrange := TRUE;
+    ELSE
+        ELM3142_Overrange := FALSE;
+    END_IF
+
+    IF elm3142.MDP5001_350_Input.MDP5001_350_PAI_Status_Channel_1_Status.Underrange THEN
+        ELM3142_Underrange := TRUE;
+    ELSE
+        ELM3142_Underrange := FALSE;
+    END_IF
+ELSE
+    ELM3142_Error      := FALSE;
+    ELM3142_Overrange  := FALSE;
+    ELM3142_Underrange := FALSE;
+END_IF
+
+// Umrechnung in Ampere
+IF nIn3174A1 < 0 THEN 
+	nCurr:=0;
+ELSE
+	nCurr:=  nIn3174A1 * 16.0 / 30518 +4; //Extended Range 
+END_IF
+IF nELM > 0 THEN
+		nElmCurr:= nELM * 16.0/7812500+4; // Strom im Messbereich 4..20 mA
+ELSE
+			nElmCurr := 0;
+END_IF
+// Umrechnung RTD
+
+	nRTDVal:=  nRTD / 10.0;
+
+// Umrechnung in Volt
+
+	nVoltELM := nELM / 7812500.0 * 10;  // Extended Range
+	nVoltEL := 10.0 * nIn3074V1 / 32767;
+		
+	
+//	Alarm
+
+IF bClearLoggedEvents THEN
+   bClearLoggedEvents:= NOT fbEventlogger.ClearLoggedEvents(0);
+END_IF
+
+(*
+IF NOT bIsInitalized THEN
+	bIsInitalized := TRUE;
+	fbMessage.CreateEx(TC_Events.MyEvents.Start, 0);
+	fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);
+END_IF
+
+IF bMessage THEN
+	bMessage := FALSE;
+	fbMessage.Send(0);
+END_IF
+
+IF bAlarm THEN
+	bAlarm := FALSE;
+	fbAlarm.Raise(0);
+END_IF
+
+IF bClearAlarm THEN
+	bClearAlarm := FALSE;
+	fbAlarm.Clear(0, TRUE);
+END_IF
+*)
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="987" Count="0" />
+      <LineId Id="1577" Count="0" />
+      <LineId Id="1281" Count="0" />
+      <LineId Id="1584" Count="1" />
+      <LineId Id="1583" Count="0" />
+      <LineId Id="1586" Count="0" />
+      <LineId Id="1578" Count="1" />
+      <LineId Id="1581" Count="1" />
+      <LineId Id="1704" Count="12" />
+      <LineId Id="1703" Count="0" />
+      <LineId Id="1949" Count="0" />
+      <LineId Id="1946" Count="2" />
+      <LineId Id="1945" Count="0" />
+      <LineId Id="1830" Count="0" />
+      <LineId Id="1717" Count="0" />
+      <LineId Id="1573" Count="0" />
+      <LineId Id="989" Count="2" />
+      <LineId Id="1413" Count="0" />
+      <LineId Id="1412" Count="0" />
+      <LineId Id="1524" Count="2" />
+      <LineId Id="1424" Count="0" />
+      <LineId Id="1539" Count="0" />
+      <LineId Id="1552" Count="0" />
+      <LineId Id="1556" Count="0" />
+      <LineId Id="1558" Count="0" />
+      <LineId Id="1557" Count="0" />
+      <LineId Id="1564" Count="1" />
+      <LineId Id="1563" Count="0" />
+      <LineId Id="1540" Count="0" />
+      <LineId Id="1831" Count="1" />
+      <LineId Id="1541" Count="2" />
+      <LineId Id="1545" Count="6" />
+      <LineId Id="1425" Count="0" />
+      <LineId Id="993" Count="2" />
+      <LineId Id="1411" Count="0" />
+      <LineId Id="1410" Count="0" />
+      <LineId Id="2077" Count="1" />
+      <LineId Id="996" Count="1" />
+      <LineId Id="2073" Count="0" />
+      <LineId Id="999" Count="4" />
+      <LineId Id="1417" Count="0" />
+      <LineId Id="1005" Count="18" />
+      <LineId Id="1409" Count="0" />
+      <LineId Id="1025" Count="41" />
+      <LineId Id="1298" Count="5" />
+      <LineId Id="1071" Count="0" />
+      <LineId Id="1287" Count="0" />
+      <LineId Id="1072" Count="72" />
+      <LineId Id="2098" Count="5" />
+      <LineId Id="2082" Count="0" />
+      <LineId Id="2089" Count="0" />
+      <LineId Id="1145" Count="9" />
+      <LineId Id="2140" Count="5" />
+      <LineId Id="2121" Count="0" />
+      <LineId Id="1174" Count="11" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="2147" Count="226" />
+      <LineId Id="2146" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

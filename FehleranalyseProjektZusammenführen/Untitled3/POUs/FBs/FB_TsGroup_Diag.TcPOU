@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsGroup_Diag" Id="{cfb8df5d-81a5-4aab-a93e-94f68e2a2b3f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsGroup_Diag
+VAR_INPUT
+	nDiag		: USINT;
+END_VAR
+VAR_OUTPUT
+	sDiag		: STRING;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nDiag OF
+	0:	sDiag := 'No Error';
+	1:	sDiag := 'Fb Error';
+	2:	sDiag := 'Com Error';
+	3:	sDiag := 'Module Error';
+	4:	sDiag := 'CMP Error';
+	5:	sDiag := 'Deactivate Error';
+	6:	sDiag := 'Restart Error';
+ELSE
+	sDiag := 'undefined';
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsGroup_Diag">
+      <LineId Id="10" Count="9" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

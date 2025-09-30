@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsFBEDM_State" Id="{75b6feb7-500f-425c-b809-b5e16642c722}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsFBEDM_State
+VAR_INPUT
+	nState: USINT;
+END_VAR
+VAR_OUTPUT
+	sState: STRING;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nState OF
+	2:		sState := 'STOP';	
+	4:		sState := 'ERROR';	
+	5:		sState := 'RESET';	
+	14:		sState := 'MON_OFF';	
+	15:		sState := 'MON_ON';	
+ELSE 
+	sState := 'undefined';
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsFBEDM_State">
+      <LineId Id="10" Count="7" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

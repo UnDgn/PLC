@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_CoEDiagObjects_EL2912" Id="{4fd957b8-20ea-459c-af47-38e59d00f247}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CoEDiagObjects_EL2912
+VAR_INPUT
+	stDiagObjectsEL2912 											: ST_TsDiagObjectsEL2912;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	TsDiagObjectsBitsEL2912_bSensorTestError_Input1			: BOOL;
+	TsDiagObjectsBitsEL2912_bSensorTestError_Input2			: BOOL;
+	TsDiagObjectsBitsEL2912_bSensorTestError_Input3			: BOOL;
+	TsDiagObjectsBitsEL2912_bSensorTestError_Input4			: BOOL;
+	TsDiagObjectsBitsEL2912_bErrFirstInputPair 				: BOOL;
+	TsDiagObjectsBitsEL2912_bErrSecondInputPair 			: BOOL;
+	TsDiagObjectsBitsEL2912_bMatOpModeErrFirstInputPair 	: BOOL;
+	TsDiagObjectsBitsEL2912_bMatOpModeErrSecondInputPair 	: BOOL;
+	TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input1 : BOOL;
+	TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input2 : BOOL;
+	TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input3 : BOOL;
+	TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input4 : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Sensor-Test Error
+TsDiagObjectsBitsEL2912_bSensorTestError_Input1		:= stDiagObjectsEL2912.nSensorTestError.0;
+TsDiagObjectsBitsEL2912_bSensorTestError_Input2		:= stDiagObjectsEL2912.nSensorTestError.1;
+TsDiagObjectsBitsEL2912_bSensorTestError_Input3		:= stDiagObjectsEL2912.nSensorTestError.2;
+TsDiagObjectsBitsEL2912_bSensorTestError_Input4		:= stDiagObjectsEL2912.nSensorTestError.3;
+
+																			
+//Error in the safety mat operating mode: external supply
+TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input1 := stDiagObjectsEL2912.nMatModeExternalSupplyError.0;
+TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input2 := stDiagObjectsEL2912.nMatModeExternalSupplyError.1;
+TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input3 := stDiagObjectsEL2912.nMatModeExternalSupplyError.2;
+TsDiagObjectsBitsEL2912_bMatOpModeExtSupplyError_Input4 := stDiagObjectsEL2912.nMatModeExternalSupplyError.3;
+
+
+//muss noch um die Ausgabe in Textform über Strings ergänzt werden!]]></ST>
+    </Implementation>
+    <LineIds Name="FB_CoEDiagObjects_EL2912">
+      <LineId Id="88" Count="13" />
+      <LineId Id="45" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

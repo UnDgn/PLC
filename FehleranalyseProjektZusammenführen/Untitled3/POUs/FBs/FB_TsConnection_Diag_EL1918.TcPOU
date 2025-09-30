@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TsConnection_Diag_EL1918" Id="{564d7d58-4370-49e4-bdf9-aeccf6cc7275}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TsConnection_Diag_EL1918
+VAR_INPUT
+    nDiagCode : UINT; // Diagnosecode (Bitfeld)
+END_VAR
+VAR_OUTPUT
+    sDiag : STRING(255);
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[sDiag := '';
+
+IF (nDiagCode AND 16#0001) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Slave signals error; ');
+END_IF;
+IF (nDiagCode AND 16#0002) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Invalid vendorId/productCode; ');
+END_IF;
+IF (nDiagCode AND 16#0004) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Initialization error; ');
+END_IF;
+IF (nDiagCode AND 16#0008) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Slave disabled; ');
+END_IF;
+IF (nDiagCode AND 16#0010) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Slave not present; ');
+END_IF;
+IF (nDiagCode AND 16#0020) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Link error; ');
+END_IF;
+IF (nDiagCode AND 16#0040) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Missing link; ');
+END_IF;
+IF (nDiagCode AND 16#0080) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Unexpected link; ');
+END_IF;
+IF (nDiagCode AND 16#0100) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Comm Port A; ');
+END_IF;
+IF (nDiagCode AND 16#0200) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Comm Port B; ');
+END_IF;
+IF (nDiagCode AND 16#0400) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Comm Port C; ');
+END_IF;
+IF (nDiagCode AND 16#0800) <> 0 THEN
+    sDiag := CONCAT(sDiag, 'Comm Port D; ');
+END_IF;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TsConnection_Diag_EL1918">
+      <LineId Id="121" Count="36" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

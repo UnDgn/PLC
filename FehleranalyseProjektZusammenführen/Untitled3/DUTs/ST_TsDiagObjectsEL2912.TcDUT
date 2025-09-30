@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <DUT Name="ST_TsDiagObjectsEL2912" Id="{23d3ae41-b1b4-4645-a068-d80d02f32eae}">
+    <Declaration><![CDATA[TYPE ST_TsDiagObjectsEL2912 :
+(*******************************************************************************************************
+Description			:	Index 16#800E Diagnostic objects
+Supported terminals : 	EL1904
+********************************************************************************************************)
+STRUCT
+
+	nNotUsedData1								:ARRAY[0..8] OF UINT;
+
+(* Sensor test error *)
+	nSensorTestError						:UINT;
+	(*TsDiagObjectsBitsEL2904_bSensorTestError_Output1		 		  	 := stDiagObjects.nSensorTestError.0;
+	TsDiagObjectsBitsEL2904_bSensorTestError_Output2		 			 := stDiagObjects.nSensorTestError.1;
+	TsDiagObjectsBitsEL2904_bSensorTestError_Output3		 			 := stDiagObjects.nSensorTestError.2;
+	TsDiagObjectsBitsEL2904_bSensorTestError_Output4		 			 := stDiagObjects.nSensorTestError.3;*)
+	
+
+
+(* Error in the safety mat operating mode: input pair disagree *)
+	nMatModeInputPairDisagreeError			:UINT;
+	(*TsDiagObjectsBitsEL2904_bMatOpModeErrFirstInputPair	 := stDiagObjects.nMatModeInputPairDisagreeError.0 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.1;
+	TsDiagObjectsBitsEL2904_bMatOpModeErrSecondInputPair := stDiagObjects.nMatModeInputPairDisagreeError.2 
+																			AND stDiagObjects.nMatModeInputPairDisagreeError.3;*)
+	
+(* Error in the safety mat operating mode: external supply *)
+	nMatModeExternalSupplyError				:UINT;
+	(*TsDiagObjectsBitsEL2904_bMatOpModeExtSupplyError_Output1 := stDiagObjects.nMatModeExternalSupplyError.0;
+	TsDiagObjectsBitsEL2904_bMatOpModeExtSupplyError_Output2 := stDiagObjects.nMatModeExternalSupplyError.1;
+	TsDiagObjectsBitsEL2904_bMatOpModeExtSupplyError_Output3 := stDiagObjects.nMatModeExternalSupplyError.2;
+	TsDiagObjectsBitsEL2904_bMatOpModeExtSupplyError_Output4 := stDiagObjects.nMatModeExternalSupplyError.3;*)
+	
+	nNotUsedData2								:ARRAY[0..2] OF UINT;
+
+END_STRUCT
+END_TYPE
+(* End *)
+
+
+
+
+
+
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

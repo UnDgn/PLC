@@ -6,16 +6,28 @@
 		<Text TxtId="a destination was mapped twice in the byte mapping code (Page: 0x{0,x}, Code-Address: 0x{1,x})"/>
 		<Text TxtId="A FB-Input Bit-Mapping was expected at offset {0}"/>
 		<Text TxtId="A FB-Input Byte-Mapping was expected at offset {0}"/>
+		<Text TxtId="A fragment timeout has occurred.">
+			<Text LcId="1031">Fragment Timeout aufgetreten.</Text>
+		</Text>
 		<Text TxtId="A Group-Input Mapping was expected at offset {0}"/>
 		<Text TxtId="A module fault happened in group {0}"/>
 		<Text TxtId="A Module fault was detected on the {0}. connection in state CONNECTION"/>
 		<Text TxtId="A Module fault was detected on the {0}. connection in state DATA"/>
 		<Text TxtId="A Module fault was detected on the {0}. connection in state PARAMETER"/>
+		<Text TxtId="Access denied – secure ADS access denied.">
+			<Text LcId="1031">Zugriff Verweigert – Secure ADS Zugriff verweigert.</Text>
+		</Text>
+		<Text TxtId="Access denied.">
+			<Text LcId="1031">Zugriff verweigert.</Text>
+		</Text>
 		<Text TxtId="Actual drive state: 0x{0,X}, {1}">
 			<Text LcId="1031">Aktueller Status des Antriebs: 0x{0,X}, {1}</Text>
 		</Text>
 		<Text TxtId="ADC Error">
 			<Text LcId="1031">Fehler bei der ADC-Strommessung</Text>
+		</Text>
+		<Text TxtId="AdsTransMode is not supported.">
+			<Text LcId="1031">AdsTransMode wird nicht unterstützt.</Text>
 		</Text>
 		<Text TxtId="All groups will enter the ERROR-state because the CRC of the Change FB Parameter Data was wrong"/>
 		<Text TxtId="All groups will enter the ERROR-state because the CRC of the Change Group Activation Data was wrong"/>
@@ -25,6 +37,18 @@
 		<Text TxtId="All groups will enter the ERROR-state because the initialization of Cyclic FRAM Data was wrong"/>
 		<Text TxtId="All groups will enter the ERROR-state because the safe logic program has been restarted"/>
 		<Text TxtId="All needed CfgData pages were downloaded before, no more pages are expected"/>
+		<Text TxtId="Allocation locked – memory error.">
+			<Text LcId="1031">Zuweisung gesperrt - Speicherfehler.</Text>
+		</Text>
+		<Text TxtId="AMS Sync error.">
+			<Text LcId="1031">AMS Sync Fehler.</Text>
+		</Text>
+		<Text TxtId="AMS Sync Timeout.">
+			<Text LcId="1031">AMS Sync Timeout.</Text>
+		</Text>
+		<Text TxtId="AMS Sync Win32 error.">
+			<Text LcId="1031">AMS Sync Win32 Fehler.</Text>
+		</Text>
 		<Text TxtId="At least one Cfg Data page has to be defined in the Safe Logic Cfg Data"/>
 		<Text TxtId="At least one Cfg Data page has to be defined in the Safe User Parameter Cfg Data"/>
 		<Text TxtId="At least one FB input has to be deactivated in this operation mode at offset {0}"/>
@@ -54,6 +78,9 @@
 		<Text TxtId="Channel {0} is not in saturation anymore">
 			<Text LcId="1031">Kanal {0} ist nicht mehr in Sättigung</Text>
 		</Text>
+		<Text TxtId="Class ID is invalid.">
+			<Text LcId="1031">Class-ID ist ungültig.</Text>
+		</Text>
 		<Text TxtId="Cogging compensation not supported ({0})">
 			<Text LcId="1031">Cogging Kompensation nicht unterstützt ({0})</Text>
 		</Text>
@@ -76,6 +103,15 @@
 			<Text LcId="1031">Konfigurationsfehler: Ungültige SYNC0 Zyklus Zeit</Text>
 		</Text>
 		<Text TxtId="Connection Type is not supported at word-offset 0x{0,x} of the cfg data"/>
+		<Text TxtId="Context – forward to dispatch level.">
+			<Text LcId="1031">Kontext – Weiterleitung zum Dispatch-Level.</Text>
+		</Text>
+		<Text TxtId="Context – forward to passive level.">
+			<Text LcId="1031">Kontext – Weiterleitung zum Passiv-Level.</Text>
+		</Text>
+		<Text TxtId="Context – forward to real-time.">
+			<Text LcId="1031">Kontext – Weiterleitung zur Echtzeit.</Text>
+		</Text>
 		<Text TxtId="Controller {0}: Maximum temperature exceeded. Temperature is 0x{1,x}, should be &lt;= 0x{2,x}."/>
 		<Text TxtId="Controller {0}: Maximum value alert (Individual ADC Check). Channel parameter = {1}. Actual value is 0x{2,x}."/>
 		<Text TxtId="Controller {0}: Maximum voltage alert (ECAT_VCC). Voltage is 0x{1,x}, should be &lt;= 0x{2,x}."/>
@@ -113,8 +149,26 @@
 		<Text TxtId="Debug: 0x{0,X}, 0x{1,X}, 0x{2,X}">
 			<Text LcId="1031">Debug: 0x{0,X}, 0x{1,X}, 0x{2,X}</Text>
 		</Text>
+		<Text TxtId="Demo license prohibited.">
+			<Text LcId="1031">Demo-Lizenz untersagt.</Text>
+		</Text>
 		<Text TxtId="Detection of operation mode completed: 0x{0,X}, {1}">
 			<Text LcId="1031">Erkennung der Betriebsart beendet: 0x{0,X}, {1}</Text>
+		</Text>
+		<Text TxtId="Device (server) is in invalid state.">
+			<Text LcId="1031">Gerät (Server) ist im ungültigen Zustand.</Text>
+		</Text>
+		<Text TxtId="Device has a timeout.">
+			<Text LcId="1031">Gerät hat einen Timeout.</Text>
+		</Text>
+		<Text TxtId="Device is busy.">
+			<Text LcId="1031">Gerät ist beschäftigt.</Text>
+		</Text>
+		<Text TxtId="Device is not initialized.">
+			<Text LcId="1031">Gerät ist nicht initialisiert.</Text>
+		</Text>
+		<Text TxtId="Device is not ready to operate.">
+			<Text LcId="1031">Gerät ist nicht betriebsbereit.</Text>
 		</Text>
 		<Text TxtId="Diag-Message-Overflow: {0} messages got lost"/>
 		<Text TxtId="Discrepancy in the PDO-Configuration">
@@ -171,8 +225,14 @@
 		<Text TxtId="Error analog voltage supply: 0x{0,X}">
 			<Text LcId="1031">Fehler bei der analogen Spannung: 0x{0,X}</Text>
 		</Text>
+		<Text TxtId="Error in Win32 subsystem">
+			<Text LcId="1031">Fehler im Win32 Subsystem.</Text>
+		</Text>
 		<Text TxtId="Error: 0x{0,X}, 0x{1,X}, 0x{2,X}">
 			<Text LcId="1031">Fehler: 0x{0,X}, 0x{1,X}, 0x{2,X}</Text>
+		</Text>
+		<Text TxtId="Exception at system startup.">
+			<Text LcId="1031">Exception beim Systemstart.</Text>
 		</Text>
 		<Text TxtId="FB CAMMON (Word-Offset 0x{0,x} of the CfgData): The TDC2UpperLimit ({1}) is lower or equal than the maximum position jitter ({2})"/>
 		<Text TxtId="FB CAMMON (Word-Offset 0x{0,x} of the CfgData): The TDCUpperLimit ({1}) is lower or equal than the maximum position jitter ({2})"/>
@@ -344,6 +404,15 @@
 		<Text TxtId="Following error">
 			<Text LcId="1031">Schleppabstand überschritten</Text>
 		</Text>
+		<Text TxtId="General device error.">
+			<Text LcId="1031">Allgemeiner Gerätefehler.</Text>
+		</Text>
+		<Text TxtId="Hash table overflow.">
+			<Text LcId="1031">Überlauf der Hash-Tabelle.</Text>
+		</Text>
+		<Text TxtId="Host unreachable.">
+			<Text LcId="1031">Host nicht erreichbar.</Text>
+		</Text>
 		<Text TxtId="I2T Amplifier overload">
 			<Text LcId="1031">I2T-Modell Verstärker Überlast</Text>
 		</Text>
@@ -370,8 +439,20 @@
 		<Text TxtId="Initialization: 0x{0,X}, 0x{1,X}, 0x{2,X}">
 			<Text LcId="1031">Initialisierung: 0x{0,X}, 0x{1,X}, 0x{2,X}</Text>
 		</Text>
+		<Text TxtId="Insufficient memory.">
+			<Text LcId="1031">Nicht genügend Speicher.</Text>
+		</Text>
 		<Text TxtId="Interface of channel {0} is not calibrated">
 			<Text LcId="1031">Interface von Kanal {0} ist nicht abgeglichen</Text>
+		</Text>
+		<Text TxtId="Interface query failed.">
+			<Text LcId="1031">Interface Abfrage fehlgeschlagen.</Text>
+		</Text>
+		<Text TxtId="Internal error in Ads sync.">
+			<Text LcId="1031">Interner Fehler in Ads-Sync.</Text>
+		</Text>
+		<Text TxtId="Internal error.">
+			<Text LcId="1031">Interner Fehler.</Text>
 		</Text>
 		<Text TxtId="Internal hardware error">
 			<Text LcId="1031">Interner Hardwarefehler</Text>
@@ -379,13 +460,49 @@
 		<Text TxtId="Internal hardware error of channel {0}: 0x{1,X}">
 			<Text LcId="1031">Interner Hardwarefehler des Kanals {0}: 0x{1,X}</Text>
 		</Text>
+		<Text TxtId="Invalid alignment.">
+			<Text LcId="1031">Ungültiges Alignment.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS fragment.">
+			<Text LcId="1031">Ungültiges AMS Fragment.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS length.">
+			<Text LcId="1031">Ungültige AMS-Länge.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS Net ID.">
+			<Text LcId="1031">Ungültige AMS Net ID.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS port.">
+			<Text LcId="1031">Ungültiger AMS-Port.</Text>
+		</Text>
+		<Text TxtId="Invalid array index.">
+			<Text LcId="1031">Ungültiger Array-Index.</Text>
+		</Text>
+		<Text TxtId="Invalid certificate.">
+			<Text LcId="1031">Zertifikat ungültig.</Text>
+		</Text>
+		<Text TxtId="Invalid client timeout value.">
+			<Text LcId="1031">Ungültiger Client Timeout-Wert.</Text>
+		</Text>
 		<Text TxtId="Invalid combination of Inputs and Outputs PDOs">
 			<Text LcId="1031">Ungültige Kombination von In- und Output PDOs</Text>
 		</Text>
 		<Text TxtId="invalid CRC when checking the Page {0} of the Replacement values Cfg Data"/>
 		<Text TxtId="invalid CRC when checking the Page {0} of the Safe Logic Cfg Data"/>
 		<Text TxtId="invalid CRC when checking the Page {0} of the Safe User Parameter Cfg Data"/>
+		<Text TxtId="Invalid data value(s).">
+			<Text LcId="1031">Ungültige Daten-Werte.</Text>
+		</Text>
 		<Text TxtId="Invalid FB output size size at offset {0} of the Replacement Values Cfg Data"/>
+		<Text TxtId="Invalid function ID.">
+			<Text LcId="1031">Funktions-ID ungültig.</Text>
+		</Text>
+		<Text TxtId="Invalid index group.">
+			<Text LcId="1031">Ungültige Index-Gruppe.</Text>
+		</Text>
+		<Text TxtId="Invalid index offset.">
+			<Text LcId="1031">Ungültiger Index-Offset.</Text>
+		</Text>
 		<Text TxtId="Invalid limit switch level">
 			<Text LcId="1031">Ungültiger Endschalter Zustand</Text>
 		</Text>
@@ -398,13 +515,34 @@
 		<Text TxtId="Invalid modulo subtype: {0}, {1}">
 			<Text LcId="1031">Modulo-Subtyp ungültig: {0}, {1}</Text>
 		</Text>
+		<Text TxtId="Invalid operating system context. This can result from use of ADS function blocks in different tasks.">
+			<Text LcId="1031">Ungültiger Kontext vom Betriebssystem. Kann durch Verwendung von ADS Bausteinen in unterschiedlichen Tasks auftreten.</Text>
+		</Text>
+		<Text TxtId="Invalid parameter value(s).">
+			<Text LcId="1031">Ungültige Parameter-Werte.</Text>
+		</Text>
+		<Text TxtId="Invalid platform level.">
+			<Text LcId="1031">Ungültiger Plattform Level.</Text>
+		</Text>
+		<Text TxtId="Invalid response received">
+			<Text LcId="1031">Ungültige Antwort erhalten.</Text>
+		</Text>
 		<Text TxtId="Invalid Safe User Parameter Offset at word offset 0x{0,x} (Calculated=0x{1,x}, Expected=0x{2,x})"/>
 		<Text TxtId="Invalid Safe User Parameter size at byte offset 0x{0,x} (Found={1}, Expected={2})"/>
+		<Text TxtId="Invalid signature.">
+			<Text LcId="1031">Ungültige Signatur.</Text>
+		</Text>
 		<Text TxtId="Invalid start type 0x{0,x}">
 			<Text LcId="1031">Ungültiger Start-Typ 0x{0,x}</Text>
 		</Text>
+		<Text TxtId="Invalid symbol version. This can occur due to an online change. Create a new handle.">
+			<Text LcId="1031">Symbol-Version ist ungültig. Kann durch einen Online-Change auftreten. Erzeuge einen neuen Handle.</Text>
+		</Text>
 		<Text TxtId="Invalid target position window">
 			<Text LcId="1031">Ungültiges Zeilpositionsfenster</Text>
+		</Text>
+		<Text TxtId="Invalid task ID.">
+			<Text LcId="1031">Ungültige Task-ID.</Text>
 		</Text>
 		<Text TxtId="Invalid value for &quot;Target acceleration&quot;">
 			<Text LcId="1031"><![CDATA[Ungültiger Wert für "Target acceleration"]]></Text>
@@ -418,12 +556,45 @@
 		<Text TxtId="Invalid value for &quot;Target velocity&quot;">
 			<Text LcId="1031"><![CDATA[Ungültiger Wert für "Target velocity"]]></Text>
 		</Text>
+		<Text TxtId="Invoke ID is already in use.">
+			<Text LcId="1031">Die Invoke-ID ist bereits in Benutzung.</Text>
+		</Text>
 		<Text TxtId="It is not allowed that the number of FBs and the number of Connections is zero inside the Group Cfg Data"/>
+		<Text TxtId="Key not found in hash table.">
+			<Text LcId="1031">Schlüssel in der Hash-Tabelle nicht gefunden.</Text>
+		</Text>
 		<Text TxtId="Large cycle time: {0}">
 			<Text LcId="1031">Zykluszeit zu gross: {0}</Text>
 		</Text>
 		<Text TxtId="Latch unit will be used by multiple modules">
 			<Text LcId="1031">Latch-Einheit wird von mehreren Modulen zeitgleich genutzt</Text>
+		</Text>
+		<Text TxtId="License file is read twice.">
+			<Text LcId="1031">Lizenz-Datei zweimal gelesen.</Text>
+		</Text>
+		<Text TxtId="License is exceeded.">
+			<Text LcId="1031">Lizenz überschritten.</Text>
+		</Text>
+		<Text TxtId="License is expired.">
+			<Text LcId="1031">Lizenz abgelaufen.</Text>
+		</Text>
+		<Text TxtId="License is invalid.">
+			<Text LcId="1031">Lizenz ungültig.</Text>
+		</Text>
+		<Text TxtId="License not limited in time.">
+			<Text LcId="1031">Lizenz nicht zeitlich begrenzt.</Text>
+		</Text>
+		<Text TxtId="License not valid for this system ID.">
+			<Text LcId="1031">Lizenz nicht gültig für diese System-ID.</Text>
+		</Text>
+		<Text TxtId="License problem: System ID is invalid.">
+			<Text LcId="1031">Lizenzproblem: System-ID ist ungültig.</Text>
+		</Text>
+		<Text TxtId="License problem: Time in the future.">
+			<Text LcId="1031">Lizenzproblem: Zeitpunkt in der Zukunft.</Text>
+		</Text>
+		<Text TxtId="License time period is too long.">
+			<Text LcId="1031">Lizenz-Zeitraum ist zu lang.</Text>
 		</Text>
 		<Text TxtId="Limit: Amplifier I2T-model exceeds 100%">
 			<Text LcId="1031">Limit: Verstärker I2T-Modell übersteigt 100%</Text>
@@ -442,6 +613,15 @@
 		</Text>
 		<Text TxtId="Local Inputs cannot be mapped in the Info data because no local inputs are existing"/>
 		<Text TxtId="Local Outputs cannot be mapped in the Info data because no local outputs are existing"/>
+		<Text TxtId="Locked memory cannot be allocated.">
+			<Text LcId="1031">Lockierter Speicher kann nicht zugewiesen werden.</Text>
+		</Text>
+		<Text TxtId="Low installation level – TwinCAT 2 license error.">
+			<Text LcId="1031">Installations-Level ist zu niedrig – TwinCAT 2 Lizenzfehler.</Text>
+		</Text>
+		<Text TxtId="Mailbox full – the ADS message could not be sent. Reducing the number of ADS messages per cycle will help.">
+			<Text LcId="1031">Postfach voll – Es konnte die ADS Nachricht nicht versendet werden. Reduzieren der Anzahl der ADS Nachrichten pro Zyklus bringt Abhilfe.</Text>
+		</Text>
 		<Text TxtId="Maximum position lag exceeded ({0}): channel {1}">
 			<Text LcId="1031">Maximaler Schleppfehler überschritten ({0}): Kanal {1}</Text>
 		</Text>
@@ -450,6 +630,9 @@
 		</Text>
 		<Text TxtId="Measurement error of channel {0} due to error of channel {1}">
 			<Text LcId="1031">Messfehler in Kanal {0} aufgrund von fehlerhaften Kanal {1}</Text>
+		</Text>
+		<Text TxtId="Missing license.">
+			<Text LcId="1031">Fehlende Lizenz.</Text>
 		</Text>
 		<Text TxtId="Module Shutdown due to minimum value alert (Individual ADC Check). Channel parameter = {0}."/>
 		<Text TxtId="Modulo factor invalid">
@@ -467,11 +650,17 @@
 		<Text TxtId="No ADC clock">
 			<Text LcId="1031">Kein ADC Takt vorhangen</Text>
 		</Text>
+		<Text TxtId="No AMS address.">
+			<Text LcId="1031">Keine AMS Adresse.</Text>
+		</Text>
 		<Text TxtId="No channel range error anymore (channel {0})">
 			<Text LcId="1031">Es liegt kein Messbereichsfehler mehr vor (Kanal {0})</Text>
 		</Text>
 		<Text TxtId="No communication to field-side (Auxiliary voltage missing)">
 			<Text LcId="1031">Keine Kommunikation zur Feldseite ( Hilfsspannung fehlt)</Text>
+		</Text>
+		<Text TxtId="No debugging available.">
+			<Text LcId="1031">Kein Debugging verfügbar.</Text>
 		</Text>
 		<Text TxtId="No error">
 			<Text LcId="1031">kein Fehler</Text>
@@ -479,9 +668,21 @@
 		<Text TxtId="No Feedback found">
 			<Text LcId="1031">Kein Feedback gefunden</Text>
 		</Text>
+		<Text TxtId="No further notification handles.">
+			<Text LcId="1031">Keine weiteren Notification Handles.</Text>
+		</Text>
 		<Text TxtId="No groups defined when trying to activate or deactivate groups"/>
+		<Text TxtId="No index map for AMS Sync available.">
+			<Text LcId="1031">Keine Index-Map für AMS Sync vorhanden.</Text>
+		</Text>
+		<Text TxtId="No IO.">
+			<Text LcId="1031">Kein IO.</Text>
+		</Text>
 		<Text TxtId="No Local Input bytes configured for Extended Info Data Mapping"/>
 		<Text TxtId="No Local Output bytes configured for Extended Info Data Mapping"/>
+		<Text TxtId="No memory.">
+			<Text LcId="1031">Kein Speicher.</Text>
+		</Text>
 		<Text TxtId="No more definitions of individual replace values for analog FB Outputs in case of Group State unequal RUN are expected at offset {0}"/>
 		<Text TxtId="No more EtherCAT size error (EtherCAT Output Size={0}, EtherCAT Input Size={1})"/>
 		<Text TxtId="No more mapping was expected at offset {0}"/>
@@ -490,9 +691,36 @@
 		<Text TxtId="No overtemperature anymore">
 			<Text LcId="1031">Gerätetemperatur ist wieder ok</Text>
 		</Text>
+		<Text TxtId="No real-time.">
+			<Text LcId="1031">Keine Echtzeit.</Text>
+		</Text>
 		<Text TxtId="No RestoreMode Slaves configured when trying to start the Restore Mode"/>
+		<Text TxtId="No symbols in the cache.">
+			<Text LcId="1031">Keine Symbole im Cache.</Text>
+		</Text>
 		<Text TxtId="No variable linkage">
 			<Text LcId="1031">Keine Variablen verknüpft</Text>
+		</Text>
+		<Text TxtId="Not found (files, ...).">
+			<Text LcId="1031">Nicht gefunden (Dateien,...).</Text>
+		</Text>
+		<Text TxtId="Notification client is not registered.">
+			<Text LcId="1031">Notification-Client nicht registriert. </Text>
+		</Text>
+		<Text TxtId="Notification handle is invalid.">
+			<Text LcId="1031">Notification Handle ist ungültig.</Text>
+		</Text>
+		<Text TxtId="Notification size too large.">
+			<Text LcId="1031">Größe der Notification zu groß.</Text>
+		</Text>
+		<Text TxtId="Object already exists.">
+			<Text LcId="1031">Objekt ist bereits vorhanden.</Text>
+		</Text>
+		<Text TxtId="Object ID is invalid.">
+			<Text LcId="1031">Object-ID ist ungültig.</Text>
+		</Text>
+		<Text TxtId="Objects do not match.">
+			<Text LcId="1031">Objekte stimmen nicht überein.</Text>
 		</Text>
 		<Text TxtId="OCT communication error">
 			<Text LcId="1031">OCT Kommunikationsfehler</Text>
@@ -571,6 +799,9 @@
 		<Text TxtId="Operation mode incompatible to PDO interface: 0x{0,X}, {1}">
 			<Text LcId="1031">Betriebsart inkompatibel zum PDO-Interface: 0x{0,X}, {1}</Text>
 		</Text>
+		<Text TxtId="Outside the valid range.">
+			<Text LcId="1031">Außerhalb des gültigen Bereiches.</Text>
+		</Text>
 		<Text TxtId="Overcurrent">
 			<Text LcId="1031">Überstrom auf Phase U, V oder W</Text>
 		</Text>
@@ -592,11 +823,29 @@
 		<Text TxtId="Overvoltage E-Bus supply">
 			<Text LcId="1031">Überspannung E-Bus Versorgung</Text>
 		</Text>
+		<Text TxtId="Parameter size is not correct.">
+			<Text LcId="1031">Parametergröße ist nicht korrekt.</Text>
+		</Text>
 		<Text TxtId="PD-Watchdog">
 			<Text LcId="1031">PD-Watchdog</Text>
 		</Text>
 		<Text TxtId="Phase failure">
 			<Text LcId="1031">Phasenfehler</Text>
+		</Text>
+		<Text TxtId="Polling list is empty.">
+			<Text LcId="1031">Polling-Liste ist leer.</Text>
+		</Text>
+		<Text TxtId="Port already connected.">
+			<Text LcId="1031">Port bereits verbunden.</Text>
+		</Text>
+		<Text TxtId="Port disabled – TwinCAT system service not started.">
+			<Text LcId="1031">Port deaktiviert – TwinCAT System Service nicht gestartet.</Text>
+		</Text>
+		<Text TxtId="Port is not open.">
+			<Text LcId="1031">Port nicht geöffnet.</Text>
+		</Text>
+		<Text TxtId="Port not connected.">
+			<Text LcId="1031">Port nicht verbunden.</Text>
 		</Text>
 		<Text TxtId="Position set: {0}, {1}">
 			<Text LcId="1031">Position gesetzt: {0}, {1}</Text>
@@ -609,10 +858,22 @@
 		<Text TxtId="Processor usage to high (&gt;= 100%)">
 			<Text LcId="1031"><![CDATA[Prozessorauslastung zu hoch (>= 100%)]]></Text>
 		</Text>
+		<Text TxtId="Public key not known from OEM.">
+			<Text LcId="1031">Public Key vom OEM nicht bekannt.</Text>
+		</Text>
 		<Text TxtId="Range error of channel {0}">
 			<Text LcId="1031">Messbereichsfehler des Kanals {0}</Text>
 		</Text>
 		<Text TxtId="Read aborted because of invalid code buffer offset (Calculated=0x{0,x}, Expected=0x{1,x})"/>
+		<Text TxtId="Reading or writing is not permitted.">
+			<Text LcId="1031">Lesen oder Schreiben ist nicht gestattet.</Text>
+		</Text>
+		<Text TxtId="Request is aborted.">
+			<Text LcId="1031">Anforderung wird abgebrochen.</Text>
+		</Text>
+		<Text TxtId="Request pending.">
+			<Text LcId="1031">Anforderung steht aus.</Text>
+		</Text>
 		<Text TxtId="Reserved CfgData has to be zero st offset {0}"/>
 		<Text TxtId="Safe User Parameter from FRAM are not correct"/>
 		<Text TxtId="SAFEIN Pulse Detection: Detected pulse from Module:0x{0,x} / DiagChannel:0x{1,x}"/>
@@ -738,6 +999,12 @@
 		<Text TxtId="Selftest completed with error result (0x{0,X}{1,X}). Device not ok.">
 			<Text LcId="1031">Selbsttest wurde mit Fehler abgeschlossen (0x{0,X}{1,X}). Gerät nicht ok.</Text>
 		</Text>
+		<Text TxtId="Service contains an invalid parameter.">
+			<Text LcId="1031">Dienst enthält einen ungültigen Parameter. </Text>
+		</Text>
+		<Text TxtId="Service is not supported by the server.">
+			<Text LcId="1031">Service wird vom Server nicht unterstützt.</Text>
+		</Text>
 		<Text TxtId="Set position error: 0x{0,X}, {1}">
 			<Text LcId="1031">Fehler beim Setzen der Position: 0x{0,X}, {1}</Text>
 		</Text>
@@ -746,6 +1013,9 @@
 		</Text>
 		<Text TxtId="Short circuit of channel {0}">
 			<Text LcId="1031">Kurzschluss an Kanal {0}</Text>
+		</Text>
+		<Text TxtId="Signal warning.">
+			<Text LcId="1031">Signal-Warnung.</Text>
 		</Text>
 		<Text TxtId="Speed limitation active">
 			<Text LcId="1031">Geschwindigkeit wird begrenzt</Text>
@@ -766,6 +1036,12 @@
 			<Text LcId="1031">Subinkremente deaktiviert: {0}, {1}</Text>
 		</Text>
 		<Text TxtId="subindex exceeded when reading the cfg data"/>
+		<Text TxtId="Symbol is not active.">
+			<Text LcId="1031">Symbol ist nicht aktiv.</Text>
+		</Text>
+		<Text TxtId="Symbol was not found.">
+			<Text LcId="1031">Symbol nicht gefunden.</Text>
+		</Text>
 		<Text TxtId="Sync Manager 2 Address (0x{0,x}) is invalid, minimum value = 0x{1,x}, maximum value = 0x{2,x}"/>
 		<Text TxtId="Sync Manager 2 Size ({0}) is invalid, minimum value = {1}, maximum value = {2}"/>
 		<Text TxtId="Sync Manager 3 Address (0x{0,x}) is invalid, minimum value = 0x{1,x}, maximum value = 0x{2,x}"/>
@@ -779,15 +1055,31 @@
 		<Text TxtId="Sync Manager 7 Address (0x{0,x}) is invalid, minimum value = 0x{1,x}, maximum value = 0x{2,x}"/>
 		<Text TxtId="Sync Manager 7 Size ({0}) is invalid, minimum value = {1}, maximum value = {2}"/>
 		<Text TxtId="Sync Manager {0} Settings (Offset 4-7) are invalid, expected values = 0x{1,x}, 0x{2,x}"/>
+		<Text TxtId="Sync port is locked.">
+			<Text LcId="1031">Sync Port ist verriegelt.</Text>
+		</Text>
 		<Text TxtId="Sync-Mode and PDO-Configuration are not compatible">
 			<Text LcId="1031">Sync-Mode und PDO-Konfiguration sind nicht kompatibel</Text>
 		</Text>
+		<Text TxtId="Syntax error in file or command.">
+			<Text LcId="1031">Syntax-Fehler in Datei oder Befehl.</Text>
+		</Text>
+		<Text TxtId="Target computer not found – AMS route was not found. "/>
 		<Text TxtId="Target overrun: {0}, {1}">
 			<Text LcId="1031">Zielposition wird überfahren: {0}, {1}</Text>
+		</Text>
+		<Text TxtId="Target port not found – ADS server is not started or is not reachable.">
+			<Text LcId="1031">Ziel-Port nicht gefunden – ADS Server ist nicht gestartet oder erreichbar.</Text>
 		</Text>
 		<Text TxtId="Target position exceeds Modulofactor">
 			<Text LcId="1031">Target position ist größer als der Modulofaktor</Text>
 		</Text>
+		<Text TxtId="TcGeneralAdsEventClass"/>
+		<Text TxtId="TCP send error.">
+			<Text LcId="1031">TCP Sendefehler.</Text>
+		</Text>
+		<Text TxtId="TcRouterEventClass"/>
+		<Text TxtId="TcSystemEventClass"/>
 		<Text TxtId="Terminal-Overtemperature">
 			<Text LcId="1031">Klemmen-Übertemperatur</Text>
 		</Text>
@@ -821,6 +1113,9 @@
 		<Text TxtId="The CRC3 (iPar-CRC) is wrong, received: 0x{0,x}, expected  0x{1,x}"/>
 		<Text TxtId="the deactivation mode passivate is enabled and the number of connections is unequal 1 in the Group cfg data at word-offset 0x{0,x}"/>
 		<Text TxtId="The deactivation of groups is not enabled for any group so no replacement values should be downloaded"/>
+		<Text TxtId="The debug mailbox has reached the maximum number of possible messages.">
+			<Text LcId="1031">Das Debug Postfach hat die maximale Anzahl der möglichen Meldungen erreicht.</Text>
+		</Text>
 		<Text TxtId="The default Project CRC is wrong, the received value is 0x{0,x}"/>
 		<Text TxtId="The Delete Code ({0}) is too high in the Delete Project Cfg Data"/>
 		<Text TxtId="The Delete Project Cfg Data were downloaded in the wrong download state ({0})"/>
@@ -886,6 +1181,12 @@
 		<Text TxtId="The Input Mapping Cfg Data were downloaded in the wrong download state ({0})"/>
 		<Text TxtId="The local map code size in the FB is invalid at offset {0}"/>
 		<Text TxtId="The login watchdog has been expired"/>
+		<Text TxtId="The mailbox has reached the maximum number for fragmented messages.">
+			<Text LcId="1031">Das Postfach hat die maximale Anzahl für fragmentierte Nachrichten erreicht.</Text>
+		</Text>
+		<Text TxtId="The mailbox has reached the maximum number of possible messages.">
+			<Text LcId="1031">Das Postfach hat die maximale Anzahl der möglichen Meldungen erreicht.</Text>
+		</Text>
 		<Text TxtId="The Mapping Cfg Data CRC does not match in the Safe Project Cfg Data"/>
 		<Text TxtId="The mapping code buffer is too small for the local mapping"/>
 		<Text TxtId="The mapping code buffer is too small for the mapping"/>
@@ -896,6 +1197,9 @@
 		<Text TxtId="The maximum number ({0}) of Cfg Data pages was exceeded in the Replacement Values Cfg Data"/>
 		<Text TxtId="The maximum number ({0}) of Cfg Data pages was exceeded in the Safe Logic Cfg Data"/>
 		<Text TxtId="The maximum number ({0}) of Cfg Data pages was exceeded in the Safe User Parameter Cfg Data"/>
+		<Text TxtId="The maximum number of ports has been reached.">
+			<Text LcId="1031">Die maximale Portanzahl ist erreicht.</Text>
+		</Text>
 		<Text TxtId="The maximum size of the Replacement Values was exceeded at Word-Offset 0x{0,x} of the Group Cfg Data"/>
 		<Text TxtId="The message size at offset {0} is invalid"/>
 		<Text TxtId="The needed EtherCAT Process data buffer size ({0}) exceeded the maximum available size of {1}"/>
@@ -924,6 +1228,21 @@
 		<Text TxtId="The operation mode at offset {0} is not supported when trying to activate or deactivate groups"/>
 		<Text TxtId="The Output Mapping Cfg Data were downloaded in the wrong download state ({0})"/>
 		<Text TxtId="The password is wrong"/>
+		<Text TxtId="The port is invalid.">
+			<Text LcId="1031">Der Port ist ungültig.</Text>
+		</Text>
+		<Text TxtId="The port is not registered.">
+			<Text LcId="1031">Der Port ist nicht registriert.</Text>
+		</Text>
+		<Text TxtId="The port is removed.">
+			<Text LcId="1031">Port wird entfernt.</Text>
+		</Text>
+		<Text TxtId="The port number is already assigned.">
+			<Text LcId="1031">Die Portnummer ist bereits vergeben.</Text>
+		</Text>
+		<Text TxtId="The port type is unknown.">
+			<Text LcId="1031">Der Porttyp ist unbekannt.</Text>
+		</Text>
 		<Text TxtId="The Product-Code ({0}) is unequal the expected value of {1}"/>
 		<Text TxtId="The PROFIsafe Address 0x{0,x} is used at least twice"/>
 		<Text TxtId="The PROFIsafe I-Parameter are only valid for a TwinSAFEIO Safety Project"/>
@@ -978,6 +1297,9 @@
 		<Text TxtId="The reserved data of the SafeOut User Parameter of module {0} at byte offset 0x{1,x} has to be 0"/>
 		<Text TxtId="The Restore Mode is not supported in EtherCAT state 0x{0,x}"/>
 		<Text TxtId="The Restore Mode is supported on a TwinSAFE SC connection at word-offset 0x{0,x}"/>
+		<Text TxtId="The router memory size could not be changed.">
+			<Text LcId="1031">Die Größe des Routerspeichers konnte nicht geändert werden.</Text>
+		</Text>
 		<Text TxtId="the RUN-signal has to be active in the Group cfg data at word-offset 0x{0,x}"/>
 		<Text TxtId="The Safe Logic Cfg Data CRC does not match in the Safe Project Cfg Data"/>
 		<Text TxtId="The Safe Logic Cfg Data were downloaded in the wrong download state ({0})"/>
@@ -1061,9 +1383,21 @@
 		<Text TxtId="The {0}. connection has received an unknown FSoE-Cmd in state SHUTDOWN"/>
 		<Text TxtId="The {0}. connection has received the invalid FSoE-ConnID 0 in state SESSION"/>
 		<Text TxtId="The {0}. group has no more errors"/>
+		<Text TxtId="Timeout has occurred – the remote terminal is not responding in the specified ADS timeout.">
+			<Text LcId="1031">Timeout ist aufgetreten – Die Gegenstelle antwortet nicht im vorgegebenen ADS Timeout.</Text>
+		</Text>
+		<Text TxtId="TLS send error – secure ADS connection failed.">
+			<Text LcId="1031">TLS Sendefehler – Secure ADS Verbindung fehlgeschlagen.</Text>
+		</Text>
 		<Text TxtId="To activate the Group {0} the user has to logged in with access rights Bit 0-15 unequal 0 that the Safe Logic Program will be stopped when logging in"/>
 		<Text TxtId="Too much Local Input bytes configured for Info Data, only 31 bytes are allowed"/>
 		<Text TxtId="Too much Local Output bytes configured for Info Data, only 31 bytes are allowed"/>
+		<Text TxtId="TwinCAT Router is not active.">
+			<Text LcId="1031">Der TwinCAT Router ist nicht aktiv.</Text>
+		</Text>
+		<Text TxtId="TwinCAT Router is not initialised.">
+			<Text LcId="1031">Der TwinCAT Router ist nicht initialisiert.</Text>
+		</Text>
 		<Text TxtId="Undervoltage DC-Link">
 			<Text LcId="1031">Unterspannung DC-Zwischenkreis</Text>
 		</Text>
@@ -1075,6 +1409,15 @@
 		</Text>
 		<Text TxtId="Unexpected connection index in the Safe User Parameter Cfg Data at byte offset 0x{0,x}"/>
 		<Text TxtId="Unexpected groupindex in the Replacement values Cfg Data at offset 0x{0,x}"/>
+		<Text TxtId="Unknown AMS command.">
+			<Text LcId="1031">Unbekannter AMS-Befehl.</Text>
+		</Text>
+		<Text TxtId="Unknown command ID.">
+			<Text LcId="1031">Unbekannte Befehl-ID.</Text>
+		</Text>
+		<Text TxtId="Variable connection is already in use.">
+			<Text LcId="1031">Variablen-Verbindung bereits im Einsatz.</Text>
+		</Text>
 		<Text TxtId="Voltage on STO-/Hardware enable input missing">
 			<Text LcId="1031">Spannung am STO-/Hardware enable Eingang fehlt</Text>
 		</Text>
@@ -1095,6 +1438,9 @@
 		<Text TxtId="when reading the input mapping cfg data, it has to be started with subindex 1"/>
 		<Text TxtId="When the TwinSAFE-Address in the Project Cfg data should be used, it has to be unequal zero"/>
 		<Text TxtId="When the TwinSAFE-Address in the Project Cfg data should be used, the DIP-switch has to be zero (0x{0,x} found)"/>
+		<Text TxtId="Win32 error.">
+			<Text LcId="1031">Win32 Fehler.</Text>
+		</Text>
 		<Text TxtId="Wiring of channel {0} ok.">
 			<Text LcId="1031">Verdrahtung von Kanal {0} ok.</Text>
 		</Text>
@@ -1102,6 +1448,12 @@
 			<Text LcId="1031">Fehler beim Schreiben: {0}, {1}</Text>
 		</Text>
 		<Text TxtId="writing the PROFIsafe F-Parameter is not allowed in this logic state ({0}), the logic state has to be 1 (RUN)"/>
+		<Text TxtId="Wrong HMSG.">
+			<Text LcId="1031">Falsches HMSG.</Text>
+		</Text>
+		<Text TxtId="Wrong interface is requested.">
+			<Text LcId="1031">Falsches Interface angefordert. </Text>
+		</Text>
 		<Text TxtId="wrong subindex order when reading the input mapping cfg data, the expected subindex is {0}"/>
 		<Text TxtId="wrong subindex order when reading the mapping cfg data, the expected subindex is {0}"/>
 		<Text TxtId="{0} input bit mappings of the FBs were missing in the Input Mapping Cfg Data"/>
@@ -7504,5 +7856,485 @@
 			<Name>DisplayTxtId</Name>
 			<Value>true</Value>
 		</Property>
+	</Source>
+	<Source>
+		<GUID>{7D760066-D373-4A0C-B0F1-328B1620B0F0}</GUID>
+		<Name>TcGeneralAdsEventClass</Name>
+		<Event>
+			<Id>1792</Id>
+			<Message>General device error.</Message>
+		</Event>
+		<Event>
+			<Id>1793</Id>
+			<Message>Service is not supported by the server.</Message>
+		</Event>
+		<Event>
+			<Id>1794</Id>
+			<Message>Invalid index group.</Message>
+		</Event>
+		<Event>
+			<Id>1795</Id>
+			<Message>Invalid index offset.</Message>
+		</Event>
+		<Event>
+			<Id>1796</Id>
+			<Message>Reading or writing is not permitted.</Message>
+		</Event>
+		<Event>
+			<Id>1797</Id>
+			<Message>Parameter size is not correct.</Message>
+		</Event>
+		<Event>
+			<Id>1798</Id>
+			<Message>Invalid data value(s).</Message>
+		</Event>
+		<Event>
+			<Id>1799</Id>
+			<Message>Device is not ready to operate.</Message>
+		</Event>
+		<Event>
+			<Id>1800</Id>
+			<Message>Device is busy.</Message>
+		</Event>
+		<Event>
+			<Id>1801</Id>
+			<Message>Invalid operating system context. This can result from use of ADS function blocks in different tasks.</Message>
+		</Event>
+		<Event>
+			<Id>1802</Id>
+			<Message>Insufficient memory.</Message>
+		</Event>
+		<Event>
+			<Id>1803</Id>
+			<Message>Invalid parameter value(s).</Message>
+		</Event>
+		<Event>
+			<Id>1804</Id>
+			<Message>Not found (files, ...).</Message>
+		</Event>
+		<Event>
+			<Id>1805</Id>
+			<Message>Syntax error in file or command.</Message>
+		</Event>
+		<Event>
+			<Id>1806</Id>
+			<Message>Objects do not match.</Message>
+		</Event>
+		<Event>
+			<Id>1807</Id>
+			<Message>Object already exists.</Message>
+		</Event>
+		<Event>
+			<Id>1808</Id>
+			<Message>Symbol was not found.</Message>
+		</Event>
+		<Event>
+			<Id>1809</Id>
+			<Message>Invalid symbol version. This can occur due to an online change. Create a new handle.</Message>
+		</Event>
+		<Event>
+			<Id>1810</Id>
+			<Message>Device (server) is in invalid state.</Message>
+		</Event>
+		<Event>
+			<Id>1811</Id>
+			<Message>AdsTransMode is not supported.</Message>
+		</Event>
+		<Event>
+			<Id>1812</Id>
+			<Message>Notification handle is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1813</Id>
+			<Message>Notification client is not registered.</Message>
+		</Event>
+		<Event>
+			<Id>1814</Id>
+			<Message>No further notification handles.</Message>
+		</Event>
+		<Event>
+			<Id>1815</Id>
+			<Message>Notification size too large.</Message>
+		</Event>
+		<Event>
+			<Id>1816</Id>
+			<Message>Device is not initialized.</Message>
+		</Event>
+		<Event>
+			<Id>1817</Id>
+			<Message>Device has a timeout.</Message>
+		</Event>
+		<Event>
+			<Id>1818</Id>
+			<Message>Interface query failed.</Message>
+		</Event>
+		<Event>
+			<Id>1819</Id>
+			<Message>Wrong interface is requested.</Message>
+		</Event>
+		<Event>
+			<Id>1820</Id>
+			<Message>Class ID is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1821</Id>
+			<Message>Object ID is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1822</Id>
+			<Message>Request pending.</Message>
+		</Event>
+		<Event>
+			<Id>1823</Id>
+			<Message>Request is aborted.</Message>
+		</Event>
+		<Event>
+			<Id>1824</Id>
+			<Message>Signal warning.</Message>
+		</Event>
+		<Event>
+			<Id>1825</Id>
+			<Message>Invalid array index.</Message>
+		</Event>
+		<Event>
+			<Id>1826</Id>
+			<Message>Symbol is not active.</Message>
+		</Event>
+		<Event>
+			<Id>1827</Id>
+			<Message>Access denied.</Message>
+		</Event>
+		<Event>
+			<Id>1828</Id>
+			<Message>Missing license.</Message>
+		</Event>
+		<Event>
+			<Id>1829</Id>
+			<Message>License is expired.</Message>
+		</Event>
+		<Event>
+			<Id>1830</Id>
+			<Message>License is exceeded.</Message>
+		</Event>
+		<Event>
+			<Id>1831</Id>
+			<Message>License is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1832</Id>
+			<Message>License problem: System ID is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1833</Id>
+			<Message>License not limited in time.</Message>
+		</Event>
+		<Event>
+			<Id>1834</Id>
+			<Message>License problem: Time in the future.</Message>
+		</Event>
+		<Event>
+			<Id>1835</Id>
+			<Message>License time period is too long.</Message>
+		</Event>
+		<Event>
+			<Id>1836</Id>
+			<Message>Exception at system startup.</Message>
+		</Event>
+		<Event>
+			<Id>1837</Id>
+			<Message>License file is read twice.</Message>
+		</Event>
+		<Event>
+			<Id>1838</Id>
+			<Message>Invalid signature.</Message>
+		</Event>
+		<Event>
+			<Id>1839</Id>
+			<Message>Invalid certificate.</Message>
+		</Event>
+		<Event>
+			<Id>1840</Id>
+			<Message>Public key not known from OEM.</Message>
+		</Event>
+		<Event>
+			<Id>1841</Id>
+			<Message>License not valid for this system ID.</Message>
+		</Event>
+		<Event>
+			<Id>1842</Id>
+			<Message>Demo license prohibited.</Message>
+		</Event>
+		<Event>
+			<Id>1843</Id>
+			<Message>Invalid function ID.</Message>
+		</Event>
+		<Event>
+			<Id>1844</Id>
+			<Message>Outside the valid range.</Message>
+		</Event>
+		<Event>
+			<Id>1845</Id>
+			<Message>Invalid alignment.</Message>
+		</Event>
+		<Event>
+			<Id>1846</Id>
+			<Message>Invalid platform level.</Message>
+		</Event>
+		<Event>
+			<Id>1847</Id>
+			<Message>Context – forward to passive level.</Message>
+		</Event>
+		<Event>
+			<Id>1848</Id>
+			<Message>Context – forward to dispatch level.</Message>
+		</Event>
+		<Event>
+			<Id>1849</Id>
+			<Message>Context – forward to real-time.</Message>
+		</Event>
+		<Event>
+			<Id>1857</Id>
+			<Message>Service contains an invalid parameter.</Message>
+		</Event>
+		<Event>
+			<Id>1858</Id>
+			<Message>Polling list is empty.</Message>
+		</Event>
+		<Event>
+			<Id>1859</Id>
+			<Message>Variable connection is already in use.</Message>
+		</Event>
+		<Event>
+			<Id>1860</Id>
+			<Message>Invoke ID is already in use.</Message>
+		</Event>
+		<Event>
+			<Id>1861</Id>
+			<Message>Timeout has occurred – the remote terminal is not responding in the specified ADS timeout.</Message>
+		</Event>
+		<Event>
+			<Id>1862</Id>
+			<Message>Error in Win32 subsystem</Message>
+		</Event>
+		<Event>
+			<Id>1863</Id>
+			<Message>Invalid client timeout value.</Message>
+		</Event>
+		<Event>
+			<Id>1864</Id>
+			<Message>Port is not open.</Message>
+		</Event>
+		<Event>
+			<Id>1865</Id>
+			<Message>No AMS address.</Message>
+		</Event>
+		<Event>
+			<Id>1872</Id>
+			<Message>Internal error in Ads sync.</Message>
+		</Event>
+		<Event>
+			<Id>1873</Id>
+			<Message>Hash table overflow.</Message>
+		</Event>
+		<Event>
+			<Id>1874</Id>
+			<Message>Key not found in hash table.</Message>
+		</Event>
+		<Event>
+			<Id>1875</Id>
+			<Message>No symbols in the cache.</Message>
+		</Event>
+		<Event>
+			<Id>1876</Id>
+			<Message>Invalid response received</Message>
+		</Event>
+		<Event>
+			<Id>1877</Id>
+			<Message>Sync port is locked.</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{E759605A-2341-48FC-9F3F-C8FA405C4B24}</GUID>
+		<Name>TcRouterEventClass</Name>
+		<Event>
+			<Id>1280</Id>
+			<Message>Locked memory cannot be allocated.</Message>
+		</Event>
+		<Event>
+			<Id>1281</Id>
+			<Message>The router memory size could not be changed.</Message>
+		</Event>
+		<Event>
+			<Id>1282</Id>
+			<Message>The mailbox has reached the maximum number of possible messages.</Message>
+		</Event>
+		<Event>
+			<Id>1283</Id>
+			<Message>The debug mailbox has reached the maximum number of possible messages.</Message>
+		</Event>
+		<Event>
+			<Id>1284</Id>
+			<Message>The port type is unknown.</Message>
+		</Event>
+		<Event>
+			<Id>1285</Id>
+			<Message>TwinCAT Router is not initialised.</Message>
+		</Event>
+		<Event>
+			<Id>1286</Id>
+			<Message>The port number is already assigned.</Message>
+		</Event>
+		<Event>
+			<Id>1287</Id>
+			<Message>The port is not registered.</Message>
+		</Event>
+		<Event>
+			<Id>1288</Id>
+			<Message>The maximum number of ports has been reached.</Message>
+		</Event>
+		<Event>
+			<Id>1289</Id>
+			<Message>The port is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1290</Id>
+			<Message>TwinCAT Router is not active.</Message>
+		</Event>
+		<Event>
+			<Id>1291</Id>
+			<Message>The mailbox has reached the maximum number for fragmented messages.</Message>
+		</Event>
+		<Event>
+			<Id>1292</Id>
+			<Message>A fragment timeout has occurred.</Message>
+		</Event>
+		<Event>
+			<Id>1293</Id>
+			<Message>The port is removed.</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{BB2A9999-102E-421A-8D3D-B0660E07B1FE}</GUID>
+		<Name>TcSystemEventClass</Name>
+		<Event>
+			<Id>1</Id>
+			<Message>Internal error.</Message>
+		</Event>
+		<Event>
+			<Id>2</Id>
+			<Message>No real-time.</Message>
+		</Event>
+		<Event>
+			<Id>3</Id>
+			<Message>Allocation locked – memory error.</Message>
+		</Event>
+		<Event>
+			<Id>4</Id>
+			<Message>Mailbox full – the ADS message could not be sent. Reducing the number of ADS messages per cycle will help.</Message>
+		</Event>
+		<Event>
+			<Id>5</Id>
+			<Message>Wrong HMSG.</Message>
+		</Event>
+		<Event>
+			<Id>6</Id>
+			<Message>Target port not found – ADS server is not started or is not reachable.</Message>
+		</Event>
+		<Event>
+			<Id>7</Id>
+			<Message>Target computer not found – AMS route was not found. </Message>
+		</Event>
+		<Event>
+			<Id>8</Id>
+			<Message>Unknown command ID.</Message>
+		</Event>
+		<Event>
+			<Id>9</Id>
+			<Message>Invalid task ID.</Message>
+		</Event>
+		<Event>
+			<Id>10</Id>
+			<Message>No IO.</Message>
+		</Event>
+		<Event>
+			<Id>11</Id>
+			<Message>Unknown AMS command.</Message>
+		</Event>
+		<Event>
+			<Id>12</Id>
+			<Message>Win32 error.</Message>
+		</Event>
+		<Event>
+			<Id>13</Id>
+			<Message>Port not connected.</Message>
+		</Event>
+		<Event>
+			<Id>14</Id>
+			<Message>Invalid AMS length.</Message>
+		</Event>
+		<Event>
+			<Id>15</Id>
+			<Message>Invalid AMS Net ID.</Message>
+		</Event>
+		<Event>
+			<Id>16</Id>
+			<Message>Low installation level – TwinCAT 2 license error.</Message>
+		</Event>
+		<Event>
+			<Id>17</Id>
+			<Message>No debugging available.</Message>
+		</Event>
+		<Event>
+			<Id>18</Id>
+			<Message>Port disabled – TwinCAT system service not started.</Message>
+		</Event>
+		<Event>
+			<Id>19</Id>
+			<Message>Port already connected.</Message>
+		</Event>
+		<Event>
+			<Id>20</Id>
+			<Message>AMS Sync Win32 error.</Message>
+		</Event>
+		<Event>
+			<Id>21</Id>
+			<Message>AMS Sync Timeout.</Message>
+		</Event>
+		<Event>
+			<Id>22</Id>
+			<Message>AMS Sync error.</Message>
+		</Event>
+		<Event>
+			<Id>23</Id>
+			<Message>No index map for AMS Sync available.</Message>
+		</Event>
+		<Event>
+			<Id>24</Id>
+			<Message>Invalid AMS port.</Message>
+		</Event>
+		<Event>
+			<Id>25</Id>
+			<Message>No memory.</Message>
+		</Event>
+		<Event>
+			<Id>26</Id>
+			<Message>TCP send error.</Message>
+		</Event>
+		<Event>
+			<Id>27</Id>
+			<Message>Host unreachable.</Message>
+		</Event>
+		<Event>
+			<Id>28</Id>
+			<Message>Invalid AMS fragment.</Message>
+		</Event>
+		<Event>
+			<Id>29</Id>
+			<Message>TLS send error – secure ADS connection failed.</Message>
+		</Event>
+		<Event>
+			<Id>30</Id>
+			<Message>Access denied – secure ADS access denied.</Message>
+		</Event>
 	</Source>
 </TcEventSources>

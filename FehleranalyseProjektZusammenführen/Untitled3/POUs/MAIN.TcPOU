@@ -198,10 +198,55 @@ VAR
 	
 	bClearLoggedEvents: BOOL;
 	ClearLoggedEvents: INT;
+	
+	////////////////Motion KUBAAAAAAAAAAAAAA///////////////////
+	
+	//AXIS1 -Servomotor-
+	Axis1 : AXIS_ref;
+	fbPower	: MC_Power;
+	bEnable		: BOOL;
+	fbReset	: MC_Reset;
+	bReset		: BOOL;
+	fbMoveVelocity	: MC_MoveVelocity;
+	bMove		: BOOL;
+	
+	//Fehlermeldung
+	fbReadDiag : FB_CoE_DiagHistory_ReadAxis;
+	bRead : BOOL;
+	aMessages : ARRAY [0..10] OF ST_CoE_DiagHistory_Entry;
+	nCase: INT;
+	bStartSequence: BOOL;
+	
+	//AXIS2 -Steppermotor-
+	Axis2 : AXIS_REF;
+	fbPower2 : MC_Power;
+	fbReset2 : MC_Reset;
+	fbMoveVelocity2	: MC_MoveVelocity;
+	
+	bEnable2 : BOOL;
+	bReset2 : BOOL;
+	bMove2 : BOOL;
+	
+	//Fehlermeldung
+	fbReadDiag2 : FB_CoE_DiagHistory_ReadAxis;
+	bRead2 : BOOL;
+	aMessages2 : ARRAY [0..10] OF ST_CoE_DiagHistory_Entry;
+	nCase2: INT;
+	bStartSequence2: BOOL;
+	
+	//ALLGEMEINE
+	nVelocity: LREAL := 360;
+	nDynamik: LREAL := 1000;
+	nDynamik2: LREAL := 1000;
+	
+	
 END_VAR
+
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[bSafety_RunStop := TRUE;
+      <ST><![CDATA[
+(*
+bSafety_RunStop := TRUE;
 
 nCount := nCount +0.1;
 IF nCount >= 170 THEN
@@ -689,9 +734,208 @@ IF bClearAlarm THEN
 	fbAlarm.Clear(0, TRUE);
 END_IF
 *)
+
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////Motion KUBAAAAAAAAAAAAAAAAAAAAA//////////////////////////////////////////////////
+
+//Achsstruktur zyklisch lesen
+Axis1.ReadStatus();
+//AXIS1 STARTEN
+
+fbPower(
+	Axis:= Axis1, 
+	Enable:= bEnable, 
+	Enable_Positive:= bEnable, 
+	Enable_Negative:= bEnable, 
+	Override:= , 
+	BufferMode:= , 
+	Options:= , 
+	Status=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );
+
+fbMoveVelocity(
+	Axis:= Axis1, 
+	Execute:= bMove, 
+	Velocity:= nVelocity, 
+	Acceleration:= nDynamik, 
+	Deceleration:= nDynamik, 
+	Jerk:= , 
+	Direction:= , 
+	BufferMode:= , 
+	Options:= , 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+fbReset(
+	Axis:= Axis1, 
+	Execute:= bReset, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );
+	
+//AXIS1 FEHLERMELDUNG	
+
+fbReadDiag( 
+	bEnable:= bRead, 
+	bAck:= , 
+	tTimeout:= , 
+	tReadInterval:= , 
+	stOptions:= , 
+	aDiagHistory:= aMessages, 
+	bBusy=> , 
+	bValid=> , 
+	bError=> , 
+	hrErrorCode=> , 
+	ipErrorMessage=> , 
+	stInfo=> , 
+	refAxis:= Axis1);
+	
+	
+//AXIS2 STARTEN
+Axis2.ReadStatus();
+
+fbPower2(
+	Axis:= Axis2, 
+	Enable:= bEnable2, 
+	Enable_Positive:= bEnable2, 
+	Enable_Negative:= bEnable2, 
+	Override:= , 
+	BufferMode:= , 
+	Options:= , 
+	Status=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );
+	
+fbMoveVelocity2(
+	Axis:= Axis2, 
+	Execute:= bMove2, 
+	Velocity:= nVelocity, 
+	Acceleration:= nDynamik2, 
+	Deceleration:= nDynamik2, 
+	Jerk:= , 
+	Direction:= , 
+	BufferMode:= , 
+	Options:= , 
+	InVelocity=> , 
+	Busy=> , 
+	Active=> , 
+	CommandAborted=> , 
+	Error=> , 
+	ErrorID=> );
+	
+fbReset2(
+	Axis:= Axis2, 
+	Execute:= bReset2, 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorID=> );
+	
+//AXIS2 FEHLERMELDUNG
+
+fbReadDiag2( 
+	bEnable:= bRead2, 
+	bAck:= , 
+	tTimeout:= , 
+	tReadInterval:= , 
+	stOptions:= , 
+	aDiagHistory:= aMessages2, 
+	bBusy=> , 
+	bValid=> , 
+	bError=> , 
+	hrErrorCode=> , 
+	ipErrorMessage=> , 
+	stInfo=> , 
+	refAxis:= Axis2);
+	
+	
+	
+	
+CASE nCase OF 
+	0: //INIT
+	bMove := FALSE;
+	bEnable := FALSE;
+	bReset := FALSE;
+	IF bStartSequence THEN
+		bStartSequence := FALSE;
+		nCase := nCase +10;
+	END_IF
+	
+	10: //enable axis
+	bEnable := TRUE;
+	IF Axis1.Status.ControlLoopClosed THEN
+		nCase := nCase +10;
+	END_IF
+	
+	20: //Move
+	bMove := TRUE;
+	
+	99: //
+	bMove := FALSE;
+	bReset := TRUE;
+	IF NOT axis1.Status.Error THEN
+		nCase := 0;
+	END_IF
+END_CASE
+IF Axis1.Status.Error OR fbMoveVelocity.Error THEN
+	ncase := 99; //error case
+END_IF
+
+
+CASE nCase2 OF 
+	0: //INIT
+	bMove2 := FALSE;
+	bEnable2 := FALSE;
+	bReset2 := FALSE;
+	IF bStartSequence2 THEN
+		bStartSequence2 := FALSE;
+		nCase2 := nCase2 +10;
+	END_IF
+	
+	10: //enable axis
+	bEnable2 := TRUE;
+	IF Axis2.Status.ControlLoopClosed THEN
+		nCase2 := nCase2 +10;
+	END_IF
+	
+	20: //Move
+	bMove2 := TRUE;
+	
+	99: //
+	bMove2 := FALSE;
+	bReset2 := TRUE;
+	IF NOT Axis2.Status.Error THEN
+		nCase2 := 0;
+	END_IF
+END_CASE
+IF Axis2.Status.Error OR fbMoveVelocity2.Error THEN
+	ncase2 := 99; //error case
+END_IF
+
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="2572" Count="1" />
       <LineId Id="987" Count="0" />
       <LineId Id="1577" Count="0" />
       <LineId Id="1281" Count="0" />
@@ -749,6 +993,12 @@ END_IF
       <LineId Id="1174" Count="11" />
       <LineId Id="15" Count="0" />
       <LineId Id="2147" Count="226" />
+      <LineId Id="2375" Count="13" />
+      <LineId Id="2374" Count="0" />
+      <LineId Id="2390" Count="0" />
+      <LineId Id="2392" Count="179" />
+      <LineId Id="2391" Count="0" />
+      <LineId Id="2389" Count="0" />
       <LineId Id="2146" Count="0" />
     </LineIds>
   </POU>

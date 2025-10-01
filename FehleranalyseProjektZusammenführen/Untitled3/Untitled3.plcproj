@@ -33,64 +33,64 @@
     <Compile Include="DUTs\ST_TsDiagObjectsEL2912.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_CoEDiagObjects_EL1904.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_CoEDiagObjects_EL1904.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_CoEDiagObjects_EL1918.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_CoEDiagObjects_EL1918.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_CoEDiagObjects_EL2904.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_CoEDiagObjects_EL2904.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_CoEDiagObjects_EL2912.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_CoEDiagObjects_EL2912.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_Diag.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_Diag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_Diag_EL2912.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_Diag_EL2912.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_EtherCATState_EL2904.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_EtherCATState_EL2904.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_EtherCATState_EL2912.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_EtherCATState_EL2912.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_State.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_EtherCatState_EL1918.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_EtherCatState_EL1918.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_Diag_EL1918.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_Diag_EL1918.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsConnection_EtherCATState_EL1904.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsConnection_EtherCATState_EL1904.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsFBEDM_Diag.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsFBEDM_Diag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsFBEDM_State.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsFBEDM_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsFBEStop_Diag.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsFBEStop_Diag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsFBEStop_State.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsFBEStop_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsFBMon_Diag.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsFBMon_Diag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsFBMon_State.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsFBMon_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsGroup_Diag.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsGroup_Diag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBs\FB_TsGroup_State.TcPOU">
+    <Compile Include="POUs\TwinSAFE FBs\FB_TsGroup_State.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -103,7 +103,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="POUs\FBs" />
+    <Folder Include="POUs\TwinSAFE FBs" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

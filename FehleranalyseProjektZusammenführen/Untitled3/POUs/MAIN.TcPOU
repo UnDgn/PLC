@@ -3,6 +3,11 @@
   <POU Name="MAIN" Id="{a27a3fd7-caba-4e2f-8aab-97e54d88cfde}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	
+//////////////////////////////////////////////////////TWINSAFE/////////////////////////////////////////////////////////////////////////////////
+
+//Fabian
+
 	//Variables for running the safety project
 	bSafety_RunStop					AT%Q*	: BOOL;
 	bSafety_ErrAck					AT%Q*	: BOOL;
@@ -126,7 +131,7 @@ VAR
 	nCount									: REAL;
 	nCount2									: REAL;
 	
-//---------------------------------------------------------------------------------------------------------------
+//////////////////////////////////////////////////////Analog/////////////////////////////////////////////////////////////////////////////////
 
 //Dogan
 
@@ -199,7 +204,11 @@ VAR
 	bClearLoggedEvents: BOOL;
 	ClearLoggedEvents: INT;
 	
-	////////////////Motion KUBAAAAAAAAAAAAAA///////////////////
+	
+
+//////////////////////////////////////////////////////Motion/////////////////////////////////////////////////////////////////////////////////
+
+//Kuba
 	
 	//AXIS1 -Servomotor-
 	Axis1 : AXIS_ref;
@@ -245,6 +254,10 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
+
+//////////////////////////////////////////////////////TWINSAFE/////////////////////////////////////////////////////////////////////////////////
+
+//Fabian
 (*
 bSafety_RunStop := TRUE;
 
@@ -505,8 +518,44 @@ IF bSafety_ComErr THEN	//Communication Error
 		//continue with the rest of the terminals...
 		
 END_IF
+
 	
-//----------------------------------------------Dogan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////Analog/////////////////////////////////////////////////////////////////////////////////
+
+//Dogan
+
 
  // Zeit immer aktualisieren
 tNow := TIME();
@@ -748,7 +797,64 @@ END_IF
 
 
 
-////////////////////Motion KUBAAAAAAAAAAAAAAAAAAAAA//////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////Motion/////////////////////////////////////////////////////////////////////////////////
+
+//Kuba
 
 //Achsstruktur zyklisch lesen
 Axis1.ReadStatus();
@@ -935,6 +1041,8 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="2576" Count="1" />
+      <LineId Id="2574" Count="1" />
       <LineId Id="2572" Count="1" />
       <LineId Id="987" Count="0" />
       <LineId Id="1577" Count="0" />
@@ -990,10 +1098,20 @@ END_IF
       <LineId Id="1145" Count="9" />
       <LineId Id="2140" Count="5" />
       <LineId Id="2121" Count="0" />
-      <LineId Id="1174" Count="11" />
+      <LineId Id="1174" Count="10" />
+      <LineId Id="2582" Count="0" />
+      <LineId Id="1185" Count="0" />
+      <LineId Id="2583" Count="0" />
+      <LineId Id="2586" Count="6" />
+      <LineId Id="2580" Count="0" />
+      <LineId Id="2593" Count="22" />
+      <LineId Id="2578" Count="1" />
       <LineId Id="15" Count="0" />
+      <LineId Id="2581" Count="0" />
       <LineId Id="2147" Count="226" />
       <LineId Id="2375" Count="13" />
+      <LineId Id="2616" Count="54" />
+      <LineId Id="2584" Count="1" />
       <LineId Id="2374" Count="0" />
       <LineId Id="2390" Count="0" />
       <LineId Id="2392" Count="179" />

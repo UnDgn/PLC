@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # TcXaeShell Solution File, Format Version 11.00
-VisualStudioVersion = 15.0.34829.251
+VisualStudioVersion = 17.10.35827.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{B1E792BE-AA5F-4E3C-8C82-674BF9C0715B}") = "FehleranalyseProjektZusammenführen", "FehleranalyseProjektZusammenführen\FehleranalyseProjektZusammenführen.tsproj", "{203CC185-1D11-479D-949C-5A90CA1C3E25}"
 EndProject

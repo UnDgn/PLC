@@ -22,6 +22,10 @@
       </TcLink>
       <OrderCode>EL7037</OrderCode>
       <Name>Term 38 (EL7037)</Name>
+      <FirmwareVersion>07</FirmwareVersion>
+      <CatalogNo>EL7037</CatalogNo>
+      <HardwareVersion>09</HardwareVersion>
+      <SerialNr>105 868</SerialNr>
       <ProductRevision>EL7037-0000-0021</ProductRevision>
       <WatchLog UpdateIntervalInMs="500">
         <WatchLogItem>
@@ -70,11 +74,284 @@
           <TcLink>
             <TcPrjPath>..\FehleranalyseProjektZusammenführen\FehleranalyseProjektZusammenführen.tsproj</TcPrjPath>
             <IoItemPathName>TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1101)^Term 26 (EK1122)^Term 27 (EK1101-0010)^Term 35 (EK1122)^Term 36 (EK1100)^Term 38 (EL7037)</IoItemPathName>
-            <NcItemPathName AxisType="1">TINC^NC-Task 1 SAF^Axes^Axis 2</NcItemPathName>
+            <NcItemPathName AxisType="1">TINC^NC-Task 1 SAF NEW^Axes^Axis 2</NcItemPathName>
           </TcLink>
           <SelectedModifyOptPDOsMode>0</SelectedModifyOptPDOsMode>
           <Block Id="0">
-            <Controller />
+            <Motor IsManualInput="false" IsManualMFiInput="false">
+              <DatabaseType>
+                <SchemaVersion>1.18</SchemaVersion>
+                <DataVersion>1.18.0</DataVersion>
+                <OrderCode>AS2021-0D10</OrderCode>
+                <GroupType>AS20xx</GroupType>
+                <ElectricMotorType>AS2021-0Dx0</ElectricMotorType>
+                <MotorfeedbackType>Unkn#HTL-1024I-24V</MotorfeedbackType>
+                <MotorbrakeType />
+                <AssemblyType />
+                <VendorName>BECKHOFF</VendorName>
+                <IsAc>false</IsAc>
+                <ConstructType>4</ConstructType>
+                <IsBeckhoffMotorShaftSpeicified>true</IsBeckhoffMotorShaftSpeicified>
+                <ShaftType>1</ShaftType>
+              </DatabaseType>
+              <DatabaseParameters>
+                <Parameter>
+                  <Comment LcId="1033">Motorvendor</Comment>
+                  <Name>Vendor</Name>
+                  <Data type="visibleString">Beckhoff</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Electric motor type</Comment>
+                  <Name>ElecType</Name>
+                  <Data type="visibleString">AS2021-0Dx0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Motor construction</Comment>
+                  <Name>ConstrType</Name>
+                  <Data type="real64">4</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Rated Current</Comment>
+                  <Name>Inrms</Name>
+                  <Data type="real64" unitSiNumerator="4">2</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Nominal Voltage</Comment>
+                  <Name>Unrms</Name>
+                  <Data type="real64" unitSiNumerator="38">24</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Max Voltage</Comment>
+                  <Name>Umaxrms</Name>
+                  <Data type="real64" unitSiNumerator="38">50</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Standstill torque</Comment>
+                  <Name>M0</Name>
+                  <Data type="real64" unitSiNumerator="86">0.83</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Pull out /break down torque</Comment>
+                  <Name>Mpullout</Name>
+                  <Data type="real64" unitSiNumerator="86">0.63</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">EMK</Comment>
+                  <Name>kErms</Name>
+                  <Data type="real64" unitSiNumerator="38" unitSiDenominator="225">0.025028021</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Winding resistance Ph-Ph 20°C</Comment>
+                  <Name>R</Name>
+                  <Data type="real64" unitSiNumerator="40">0.8</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Lq Ph-Ph</Comment>
+                  <Name>Lq</Name>
+                  <Data type="real64" unitSiNumerator="44">0.0038</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Max mechanical speed</Comment>
+                  <Name>Nmax</Name>
+                  <Data type="real64" unitSiNumerator="225">3600</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">J motor with brake</Comment>
+                  <Name>J</Name>
+                  <Data type="real64" unitSiNumerator="224">0.000021</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Stepps per rotation </Comment>
+                  <Name>SteppsPerRot</Name>
+                  <Data type="real64">200</Data>
+                </Parameter>
+              </DatabaseParameters>
+              <Calc>
+                <CoE>
+                  <InitCmd>
+                    <Transition>PS</Transition>
+                    <Comment>STM Features Ch.1 / Speed range</Comment>
+                    <Timeout>0</Timeout>
+                    <Ccs>1</Ccs>
+                    <Index>32786</Index>
+                    <SubIndex>5</SubIndex>
+                    <Data>02</Data>
+                  </InitCmd>
+                  <InitCmd>
+                    <Transition>PS</Transition>
+                    <Comment>STM Controller Settings Ch.1 / Kp factor (curr.)</Comment>
+                    <Timeout>0</Timeout>
+                    <Ccs>1</Ccs>
+                    <Index>32785</Index>
+                    <SubIndex>1</SubIndex>
+                    <Data>DE01</Data>
+                  </InitCmd>
+                  <InitCmd>
+                    <Transition>PS</Transition>
+                    <Comment>STM Controller Settings Ch.1 / Ki factor (curr.)</Comment>
+                    <Timeout>0</Timeout>
+                    <Ccs>1</Ccs>
+                    <Index>32785</Index>
+                    <SubIndex>2</SubIndex>
+                    <Data>A200</Data>
+                  </InitCmd>
+                  <InitCmd>
+                    <Transition>PS</Transition>
+                    <Comment>STM Controller Settings 3 Ch.1 / Kp factor (velo.)</Comment>
+                    <Timeout>0</Timeout>
+                    <Ccs>1</Ccs>
+                    <Index>32788</Index>
+                    <SubIndex>3</SubIndex>
+                    <Data>C0010000</Data>
+                  </InitCmd>
+                  <InitCmd>
+                    <Transition>PS</Transition>
+                    <Comment>STM Controller Settings 3 Ch.1 / Tn (velo.)</Comment>
+                    <Timeout>0</Timeout>
+                    <Ccs>1</Ccs>
+                    <Index>32788</Index>
+                    <SubIndex>4</SubIndex>
+                    <Data>8813</Data>
+                  </InitCmd>
+                </CoE>
+              </Calc>
+            </Motor>
+            <Feedback DataSource="1">
+              <DatabaseType>
+                <OrderCode>Unkn#HTL-1024I-24V</OrderCode>
+                <VendorName>Unknown</VendorName>
+                <IsRotary>true</IsRotary>
+                <RelativePosInterface>6</RelativePosInterface>
+                <GroupType>HTL-Encoder</GroupType>
+                <ElectricFeedbackType>Universal-HTL-1024I-24V</ElectricFeedbackType>
+              </DatabaseType>
+              <DatabaseParameters>
+                <Parameter>
+                  <Comment LcId="1033">cf: AbsolutePositionInterfaceType 0: No interface 1: BiSS B 2: EnDat2.1 3: EnDat2.2 4: Hiperface 5: BiSS C 6: BiSS C 7: Hiperface DSL 8: Resolver 9: MES 10: SSI binary 11: SSI gray 12: EnDat3.0 2-wire 100: Electrical analog commutation channel: sin(x) and sin(x-120) 102: Mechanical analog commutation channel: cos and sin 103: Electrical analog commutation channel: cos and sin</Comment>
+                  <Name>AbsolutePositionInterface</Name>
+                  <Data type="int8">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">cf. RelativePositionInterfaceType 0: No interface 1: Sinus cosinus 1Vpp 2: Incremental TTL 5V 6: Incremental HTL</Comment>
+                  <Name>RelativePositionInterface</Name>
+                  <Data type="int8">6</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">cf: KindType 0: rotary 1: linear</Comment>
+                  <Name>Kind</Name>
+                  <Data type="int8">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">cf. PowerSupplyType 0: No voltage 1: 11 V without sense 2: 5 V with sense 3: 5 V without sense 4: 3.5 V ~ 14 V</Comment>
+                  <Name>PowerManagement_PowerSupply</Name>
+                  <Data type="int8" unitSiNumerator="second">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033" />
+                  <Name>PowerManagement_DelayTimeAfterPowerUp</Name>
+                  <Data type="real64" unitSiNumerator="second">0.8</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033" />
+                  <Name>RelativePositonData_ResolutionPerRotation</Name>
+                  <Data type="int32">1024</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033" />
+                  <Name>AbsolutePositionData_ResolutionSinglePos</Name>
+                  <Data type="int16">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033" />
+                  <Name>AbsolutePositionData_ResolutionMultiPos</Name>
+                  <Data type="int16">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033" />
+                  <Name>AbsolutePositionData_NumberOfClockCyclesForSinglePos</Name>
+                  <Data type="int16">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033" />
+                  <Name>AbsolutePositionData_NumberOfClockCyclesForMultiPos</Name>
+                  <Data type="int16">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">maximal allowed continuous speed</Comment>
+                  <Name>MaxContinousOperationSpeed</Name>
+                  <Data type="real64" unitSiNumerator="revolutionsminuterpm">0</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">maximal  allowed temperature</Comment>
+                  <Name>MaxTemperature</Name>
+                  <Data type="real64" unitSiNumerator="degreeCelsius">0</Data>
+                </Parameter>
+              </DatabaseParameters>
+              <FeedbackUse>Commutation</FeedbackUse>
+              <Calc>
+                <CoE>
+                  <InitCmd>
+                    <Transition>PS</Transition>
+                    <Comment>STM Features Ch.1 / Feedback type</Comment>
+                    <Timeout>0</Timeout>
+                    <Ccs>1</Ccs>
+                    <Index>32786</Index>
+                    <SubIndex>8</SubIndex>
+                    <Data>00</Data>
+                  </InitCmd>
+                </CoE>
+              </Calc>
+            </Feedback>
+            <Load MoveStyle="Rotary">
+              <IsMotorRotary>true</IsMotorRotary>
+              <Name>InverterChannelTypeBlockLoad</Name>
+              <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
+              <Parameter>
+                <PropertyName>FeedConstantUnit</PropertyName>
+                <Value>°</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>FeedConstant</PropertyName>
+                <Value>360</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>GearRatioMotorSide</PropertyName>
+                <Value>1</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>GearRatioLoadSide</PropertyName>
+                <Value>1</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>GearboxInertia</PropertyName>
+                <Value>0</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>LoadInertiaMassReflectedOnGearbox</PropertyName>
+                <Value>0</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>MaxMoveDistance</PropertyName>
+                <Value>0</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>LoadInertiaMass</PropertyName>
+                <Value>0</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>MaxApplicationTorqueForce</PropertyName>
+                <Value>0.83</Value>
+              </Parameter>
+              <Parameter>
+                <PropertyName>MaxApplicationSpeed</PropertyName>
+                <Value>376.991118430775</Value>
+              </Parameter>
+            </Load>
+            <Controller>
+              <Stepper>
+                <ControlMode>0</ControlMode>
+              </Stepper>
+            </Controller>
           </Block>
           <WatchLog ChnId="0" UpdateIntervalInMs="500">
             <WatchLogItem>
@@ -114,11 +391,11 @@
       </Info>
       <ProcessData>
         <Send>
-          <BitStart>12728</BitStart>
+          <BitStart>12744</BitStart>
           <BitLength>64</BitLength>
         </Send>
         <Recv>
-          <BitStart>12728</BitStart>
+          <BitStart>12744</BitStart>
           <BitLength>64</BitLength>
         </Recv>
         <Sm2>
@@ -155,7 +432,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741384</IndexOffset>
+              <IndexOffset>-1073741368</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -170,7 +447,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741383</IndexOffset>
+              <IndexOffset>-1073741367</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -185,7 +462,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741382</IndexOffset>
+              <IndexOffset>-1073741366</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -200,7 +477,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741381</IndexOffset>
+              <IndexOffset>-1073741365</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -215,7 +492,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741380</IndexOffset>
+              <IndexOffset>-1073741364</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -235,7 +512,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741377</IndexOffset>
+              <IndexOffset>-1073741361</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -250,7 +527,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741376</IndexOffset>
+              <IndexOffset>-1073741360</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -265,7 +542,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741375</IndexOffset>
+              <IndexOffset>-1073741359</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -280,7 +557,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741374</IndexOffset>
+              <IndexOffset>-1073741358</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -300,7 +577,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741372</IndexOffset>
+              <IndexOffset>-1073741356</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -315,7 +592,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741371</IndexOffset>
+              <IndexOffset>-1073741355</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -335,7 +612,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741369</IndexOffset>
+              <IndexOffset>-1073741353</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -350,7 +627,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-2147483591</IndexOffset>
+              <IndexOffset>-2147483589</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -365,7 +642,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-2147483589</IndexOffset>
+              <IndexOffset>-2147483587</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -513,7 +790,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741336</IndexOffset>
+              <IndexOffset>-1073741320</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -528,7 +805,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741335</IndexOffset>
+              <IndexOffset>-1073741319</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -543,7 +820,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741334</IndexOffset>
+              <IndexOffset>-1073741318</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -558,7 +835,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741333</IndexOffset>
+              <IndexOffset>-1073741317</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -573,7 +850,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741332</IndexOffset>
+              <IndexOffset>-1073741316</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -588,7 +865,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741331</IndexOffset>
+              <IndexOffset>-1073741315</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -603,7 +880,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741330</IndexOffset>
+              <IndexOffset>-1073741314</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -618,7 +895,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741329</IndexOffset>
+              <IndexOffset>-1073741313</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -638,7 +915,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741325</IndexOffset>
+              <IndexOffset>-1073741309</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -653,7 +930,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741324</IndexOffset>
+              <IndexOffset>-1073741308</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -668,7 +945,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741323</IndexOffset>
+              <IndexOffset>-1073741307</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -688,7 +965,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1073741321</IndexOffset>
+              <IndexOffset>-1073741305</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -923,7 +1200,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964168</IndexOffset>
+              <IndexOffset>-1056964152</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -938,7 +1215,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964167</IndexOffset>
+              <IndexOffset>-1056964151</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -953,7 +1230,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964166</IndexOffset>
+              <IndexOffset>-1056964150</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -968,7 +1245,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964165</IndexOffset>
+              <IndexOffset>-1056964149</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -988,7 +1265,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-2130706375</IndexOffset>
+              <IndexOffset>-2130706373</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1052,7 +1329,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964136</IndexOffset>
+              <IndexOffset>-1056964120</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -1067,7 +1344,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964135</IndexOffset>
+              <IndexOffset>-1056964119</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -1082,7 +1359,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964134</IndexOffset>
+              <IndexOffset>-1056964118</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -1102,7 +1379,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-1056964125</IndexOffset>
+              <IndexOffset>-1056964109</IndexOffset>
               <Length>1</Length>
             </AdsInfo>
           </Entry>
@@ -1143,7 +1420,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593856</IndexGroup>
-              <IndexOffset>-2130706371</IndexOffset>
+              <IndexOffset>-2130706369</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1377,6 +1654,132 @@
               <Index>4339</Index>
               <SubIndex>5</SubIndex>
               <Data>0100</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Maximal current]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>1</SubIndex>
+              <Data>d007</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Reduced current]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>2</SubIndex>
+              <Data>e803</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Nominal voltage]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>3</SubIndex>
+              <Data>6009</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Motor coil resistance]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>4</SubIndex>
+              <Data>5000</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Motor EMF]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>5</SubIndex>
+              <Data>ef00</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Motor fullsteps]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>6</SubIndex>
+              <Data>c800</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Motor coil inductance]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>10</SubIndex>
+              <Data>7c01</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Motor Settings Ch.1 / Encoder increments (4-fold)]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32784</Index>
+              <SubIndex>7</SubIndex>
+              <Data>0010</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Features Ch.1 / Feedback type]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32786</Index>
+              <SubIndex>8</SubIndex>
+              <Data>00</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Features Ch.1 / Speed range]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32786</Index>
+              <SubIndex>5</SubIndex>
+              <Data>01</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Controller Settings Ch.1 / Kp factor (curr.)]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32785</Index>
+              <SubIndex>1</SubIndex>
+              <Data>de01</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Controller Settings Ch.1 / Ki factor (curr.)]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32785</Index>
+              <SubIndex>2</SubIndex>
+              <Data>a200</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Controller Settings 3 Ch.1 / Kp factor (velo.)]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32788</Index>
+              <SubIndex>3</SubIndex>
+              <Data>c0010000</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[STM Controller Settings 3 Ch.1 / Tn (velo.)]]></Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>32788</Index>
+              <SubIndex>4</SubIndex>
+              <Data>8813</Data>
             </InitCmd>
           </InitCmds>
           <CanOpenType>39</CanOpenType>
@@ -1687,7 +2090,7 @@
           <Cmd>5</Cmd>
           <Adp>1019</Adp>
           <Ado>1536</Ado>
-          <Data>1d000002080000070011000201000000</Data>
+          <Data>1f000002080000070011000201000000</Data>
           <Cnt>1</Cnt>
           <Retries>3</Retries>
         </InitCmd>
@@ -1697,7 +2100,7 @@
           <Cmd>5</Cmd>
           <Adp>1019</Adp>
           <Ado>1552</Ado>
-          <Data>1d000002080000078011000101000000</Data>
+          <Data>1f000002080000078011000101000000</Data>
           <Cnt>1</Cnt>
           <Retries>3</Retries>
         </InitCmd>
@@ -2021,6 +2424,6 @@
       <AmsNetId>169.254.191.109.2.1</AmsNetId>
       <AmsPort>1019</AmsPort>
     </AmsAddress>
-    <LinkedAxis Chn="0">TINC^NC-Task 1 SAF^Axes^Axis 2</LinkedAxis>
+    <LinkedAxis Chn="0">TINC^NC-Task 1 SAF NEW^Axes^Axis 2</LinkedAxis>
   </EtherCAT>
 </TreeItem>

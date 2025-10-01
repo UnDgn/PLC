@@ -1,0 +1,7 @@
+*.user
+*.~u
+*.suo
+*.sdf
+*.db
+*.log
+.vs/

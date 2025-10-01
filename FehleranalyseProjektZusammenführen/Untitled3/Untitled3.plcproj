@@ -96,6 +96,9 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\testttt.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Test1.TcTTO">
       <SubType>Code</SubType>
     </Compile>

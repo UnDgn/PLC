@@ -2121,7 +2121,7 @@ External Setpoint Generation:
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000009}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..8] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000009}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..8] OF BIT</Name>
 			<BitSize>9</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -8494,9 +8494,6 @@ Bit 8 - 15 : reserved]]></Comment>
 		<MappingInfo Identifier="{05000010-0020-0304-3000-040320000403}" Id="#x02030060" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{03040010-0040-0304-1000-040340000403}" Id="#x02030020" Watchdog="04000000140000000400000004000000"/>
 		<OwnerA Name="TIID^Device 1 (EtherCAT)">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 20 (EL1918)">
-				<Link VarA="Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1101)^Term 25 (EL2912)^Module 1 (FSOE)^FSoE Outputs^FSOE" VarB="ConnectionInputs^TwinSafeGroup1.Term 5 (EL2912) - Module 1 (FSOE)_6 TxPDO"/>
-			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 21 (EL1904)">
 				<Link VarA="Term 19 (EK1200)^Term 20 (EL1918)^ConnectionInputs^TwinSafeGroup1.Term 3 (EL1904) - Module 1 (FSOES)_4 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 				<Link VarA="Term 19 (EK1200)^Term 20 (EL1918)^ConnectionOutputs^TwinSafeGroup1.Term 3 (EL1904) - Module 1 (FSOES)_4 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
@@ -8506,6 +8503,7 @@ Bit 8 - 15 : reserved]]></Comment>
 				<Link VarA="Term 19 (EK1200)^Term 20 (EL1918)^ConnectionOutputs^TwinSafeGroup1.Term 4 (EL2904) - Module 1 (FSOES)_5 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 19 (EK1200)^Term 23 (EK1122)^Term 24 (EK1101)^Term 25 (EL2912)">
+				<Link VarA="Term 19 (EK1200)^Term 20 (EL1918)^ConnectionInputs^TwinSafeGroup1.Term 5 (EL2912) - Module 1 (FSOE)_6 TxPDO" VarB="Module 1 (FSOE)^FSoE Outputs^FSOE"/>
 				<Link VarA="Term 19 (EK1200)^Term 20 (EL1918)^ConnectionOutputs^TwinSafeGroup1.Term 5 (EL2912) - Module 1 (FSOE)_6 RxPDO" VarB="Module 1 (FSOE)^FSoE Inputs^FSOE"/>
 			</OwnerB>
 		</OwnerA>
